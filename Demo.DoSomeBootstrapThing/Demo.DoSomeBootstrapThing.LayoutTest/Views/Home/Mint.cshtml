@@ -1,53 +1,65 @@
 ﻿@model Demo.DoSomeBootstrapThing.LayoutTest.Models.MintModel
 
 @{
-    ViewBag.Title = "Mint";
+	ViewBag.Title = "Mint";
 }
 
 <h2>Mint</h2>
 
-@* 
-This is to display "Create new login" screen similar to Mint.com 
-	(refer to ~\Content\create new account - mint.png) 
+@*
+	This is to display "Create new login" screen similar to Mint.com
+		(refer to ~\Content\create new account - mint.png)
 *@
 
 
 <h3>Create a new Account</h3>
 
+<form id="mintForm" method="POST">
+	<div class="form-group">
+		<label class="control-label col-sm-2">Your Email</label>
+		<div class="col-sm-10">
+			<input type="text" id="yourEmail" class="form-control" />
+		</div>
+	</div>
 
-<div>
-	<label>Your Email</label>
-	<input type="text" id="yourEmail"/>
-</div>
-<div>
-	<label>Confirm Email</label>
-	<input type="text" id="confirmEmail"/>
-</div>
-<div>
-	<label>Country</label>
-	@Html.DropDownList("CountryList", @Model.CountryListItems)
-</div>
-<div>
-	<label>Zip Code</label>
-	<input type="text" id="zipCode" />
-</div>
-<div>
-	<label>Password</label>
-	<input type="password" id="password" />
-</div>
-<div>
-	<label>Confirm Password</label>
-	<input type="password" id="confirmPassword" />
-</div>
-<div>
-	<label>
-		<input type="checkbox" id="agreetCheckbox"/>
-		Yes, I agreet to the Terms of Use
-	</label>
-</div>
+	<div class="form-group">
+		<label class="control-label col-sm-2">Confirm Email</label>
+		<div class="col-sm-10">
+			<input type="text" id="confirmEmail" class="form-control" />
+		</div>
+	</div>
 
+	<div class="form-group">
+		<label class="control-label col-sm-2">Country</label>
+		<div class="col-sm-10">
+			@Html.DropDownListFor(m => m.CountryListItems, @Model.CountryListItems, new { @class = "form-control" })
+		</div>
+	</div>
 
+	<div class="form-group">
+		<label class="control-label col-sm-2">Zip Code</label>
+		<div class="col-sm-10"><input type="text" id="zipCode" class="form-control" /></div>
+	</div>
 
+	<div class="form-group">
+		<label class="control-label col-sm-2">Password</label>
+		<div class="col-sm-10"><input type="password" id="password" class="form-control" /></div>
+	</div>
+
+	<div class="form-group">
+		<label class="control-label col-sm-2">Confirm Password</label>
+		<div class="col-sm-10"><input type="password" id="confirmPassword" class="form-control" /></div>
+	</div>
+
+	<div class="checkbox col-sm-offset-0" style="margin-left: 15px">
+		<label>
+			<input type="checkbox" id="checkboxSuccess" value="option1">
+			Yes, I agreet to the Terms of Use
+		</label>
+	</div>
+
+	<button type="submit" class="btn btn-warning" style="margin-left: 15px">Sign Up</button>
+</form>
 
 
 
