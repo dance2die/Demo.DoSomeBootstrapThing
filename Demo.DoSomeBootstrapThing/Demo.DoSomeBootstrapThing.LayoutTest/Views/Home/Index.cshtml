@@ -1,0 +1,65 @@
+﻿@{
+	ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+<form id="mainForm" method="POST">
+	<fieldset class="col-md-6">
+		<legend>Client Info</legend>
+
+		<div class="form-group">
+			<label class="col-md-3 control-label" for="firstNameText">First Name</label>
+			<div class="col-md-9">
+				<input id="firstNameText" class="form-control" type="text"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-3 control-label" for="lastNameText">Last Name</label>
+			<div class="col-md-9">
+				<input id="lastNameText" class="form-control" type="text"/>
+			</div>
+		</div>
+	</fieldset>
+
+	<div class="col-md-6">
+		<div class="form-group">
+			<fieldset>
+				<legend>Veggies</legend>
+				<div class="checkbox">
+					<label><input type="checkbox" id="firstCheckbox" value="Kale"/>Kale</label>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" id="secondCheckbox" value="Broccoli"/>Broccoli</label>
+				</div>
+				<div class="checkbox">
+					<label><input type="checkbox" id="thirdCheckbox" value="Parsley"/>Parsley</label>
+				</div>
+			</fieldset>
+		</div>
+		<div class="form-group">
+			<fieldset>
+				<legend>Fruits</legend>
+				<div class="radio">
+					<label><input type="radio" class="radio" name="fruits" value="apple" />Apple</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" class="radio" name="fruits" value="strawberry" />Strawberry</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" class="radio" name="fruits" value="pear" />Pear</label>
+				</div>
+			</fieldset>
+		</div>
+	</div>
+</form>
+
+
+
+
+
+
+
+
+
