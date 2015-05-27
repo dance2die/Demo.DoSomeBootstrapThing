@@ -20,6 +20,11 @@ namespace Demo.DoSomeBootstrapThing.LayoutTest.Controllers
 			return View(model);
 		}
 
+		public ActionResult LinkedItems()
+		{
+			
+		}
+
 		private IEnumerable<Country> GetCountries()
 		{
 			return new List<Country>
