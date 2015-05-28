@@ -73,7 +73,7 @@ namespace BasketballPlaybook.Areas.HelpPage
 
 	    public string GetResponseDocumentation(HttpActionDescriptor actionDescriptor)
 	    {
-		    return "";
+			return "";
 	    }
 
 	    private XPathNavigator GetMethodNode(HttpActionDescriptor actionDescriptor)
