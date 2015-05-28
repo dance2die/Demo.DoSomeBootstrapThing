@@ -15,7 +15,15 @@
 
 	@for (int i = 0; i < 4; i++)
 	{
-		@Html.ActionLink(string.Format("Link {0}", i + 1), "index", "home", new {@class="list-group-item"})
+		@Html.ActionLink(string.Format("LinkI {0}", i + 1), "index", "home", new {@class="list-group-item"})
+	}
+
+	@for (int j = 0; j < 4; j++)
+	{
+		<a href="@Url.Action("index", "home", new {Id = j, link = string.Format("link{0}", j)})" class="list-group-item">
+			<span class="badge">@j</span>
+			LinkJ @j
+		</a>
 	}
 </div>
 
