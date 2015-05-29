@@ -1,0 +1,47 @@
+﻿@using Demo.DoSomeBootstrapThing.Components.Models
+
+@{
+	ViewBag.Title = "Panel";
+}
+
+@functions
+{
+
+	string GetStatusValue(int status)
+	{
+		try
+		{
+			return Enum.GetName(typeof(Status), status).ToLower();
+		}
+		catch (Exception ex)
+		{
+			return "primary";
+		}
+	}
+}
+
+<h2>Panel</h2>
+
+
+@for (int i = -1; i < 4; i++)
+{
+	var statusValue = GetStatusValue(i);
+	
+	<div class="panel panel-@statusValue">
+		<div class="panel-heading">
+			<div class="panel-title">Panel Title: @statusValue</div>
+		</div>
+		<div class="panel-body">
+			Panel Body
+		</div>
+		<div class="panel-footer">
+			Panel Footer
+		</div>
+	</div>
+}
+
+
+
+
+
+
