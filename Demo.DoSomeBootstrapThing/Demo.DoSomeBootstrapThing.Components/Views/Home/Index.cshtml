@@ -1,5 +1,17 @@
-﻿@{
+﻿@model Demo.DoSomeBootstrapThing.Components.Models.HomeIndexContext
+@using Demo.DoSomeBootstrapThing.Components.Models
+
+@{
 	ViewBag.Title = "Index";
+}
+
+@functions
+{
+
+	string GetStatusValue(int status)
+	{
+		return Enum.GetName(typeof (Status), status).ToLower();
+	}
 }
 
 <h2>Index</h2>
@@ -20,7 +32,8 @@
 
 	@for (int j = 0; j < 4; j++)
 	{
-		<a href="@Url.Action("index", "home", new {Id = j, link = string.Format("link{0}", j)})" class="list-group-item">
+		<a href="@Url.Action("index", "home", new {Id = j, link = string.Format("link{0}", j)})"
+		   class="list-group-item list-group-item-@GetStatusValue(j)">
 			<span class="badge">@j</span>
 			LinkJ @j
 		</a>
