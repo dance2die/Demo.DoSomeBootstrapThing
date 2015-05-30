@@ -30,6 +30,11 @@ namespace Demo.DoSomeBootstrapThing.Components.Controllers
 			return View();
 		}
 
+		public ActionResult Isotope()
+		{
+			return View();
+		}
+
 		public ActionResult Glyphicon()
 		{
 			return View(GetGlyphicons());
