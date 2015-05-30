@@ -127,6 +127,7 @@
     <Content Include="Views\Home\Well.cshtml" />
     <Content Include="Views\Home\Glyphicon.cshtml" />
     <Content Include="Views\Home\Isotope.cshtml" />
+    <Content Include="Views\Home\Dropdown.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

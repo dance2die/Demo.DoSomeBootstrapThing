@@ -40,6 +40,11 @@ namespace Demo.DoSomeBootstrapThing.Components.Controllers
 			return View(GetGlyphicons());
 		}
 
+		public ActionResult Dropdown()
+		{
+			return View();
+		}
+
 		private List<string> GetGlyphicons()
 		{
 			return new List<string>
