@@ -1,6 +1,5 @@
-﻿
-@{
-    ViewBag.Title = "ButtonGroups";
+﻿@{
+	ViewBag.Title = "ButtonGroups";
 }
 
 <h2>ButtonGroups</h2>
@@ -12,12 +11,23 @@
 		<button type="button" class="btn btn-default">Right</button>
 	</div>
 
-	<div class="btn-group btn-group-lg">
+	<div class="btn-group btn-group-lg btn-group-justified">
 		@for (int i = 1; i <= 5; i++)
 		{
 			<button type="button" class="btn btn-default">@i</button>
 		}
-</div></div>
+
+		<div class="btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				Dropdown<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a href="#">Link 1</a></li>
+				<li><a href="#">Link 2</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
 
 
 
