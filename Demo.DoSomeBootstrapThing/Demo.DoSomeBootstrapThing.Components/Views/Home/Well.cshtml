@@ -1,0 +1,58 @@
+﻿@using Demo.DoSomeBootstrapThing.Components.Models
+
+@{
+	ViewBag.Title = "Well";
+}
+
+@functions
+{
+	string GetStatusValue(int status)
+	{
+		try
+		{
+			return Enum.GetName(typeof(Status), status).ToLower();
+		}
+		catch (Exception ex)
+		{
+			return "primary";
+		}
+	}
+}
+
+<h2>Well</h2>
+
+
+
+<div class="panel panel-primary">
+	<div class="panel-heading">Heading</div>
+	<div class="panel-body">
+		<div class="well">
+			<p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam interdum tortor et viverra sollicitudin. Vestibulum nunc augue, facilisis vitae ultrices ut, luctus sed ante. Cras leo elit, ornare eget suscipit a, pellentesque laoreet leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam eu augue pellentesque, elementum libero et, vehicula sem. Cras at nisi a magna fringilla blandit. Ut porta semper nisi et semper. In auctor consectetur eros at egestas. Vivamus tincidunt sem ut pellentesque blandit. Donec venenatis lectus fringilla, pretium augue vitae, placerat velit. Curabitur commodo lacus luctus justo pharetra sollicitudin. Etiam eu aliquet libero, a euismod diam. Fusce viverra sapien et pulvinar gravida. Proin in lacinia lacus, sit amet viverra magna. Aliquam erat volutpat. Sed ullamcorper dignissim orci eu iaculis.</p>
+
+			<p>Nulla imperdiet malesuada maximus. Sed eu lacus sit amet velit sodales vehicula. Nunc vitae sem faucibus, fermentum dolor eget, pharetra lectus. Aliquam gravida volutpat nibh, vitae posuere tellus pulvinar ut. Pellentesque iaculis in nulla vel cursus. Curabitur enim ligula, convallis in magna ut, aliquet elementum leo. Suspendisse ultricies malesuada erat ut facilisis. Duis tincidunt, purus ut pellentesque sagittis, diam enim cursus orci, eu laoreet nisl purus sed arcu.</p>
+
+			<p>In volutpat magna efficitur lectus feugiat eleifend. Aliquam erat volutpat. Nullam mattis ullamcorper sapien vitae vehicula. Sed quis neque et turpis laoreet viverra. Nam et magna egestas, tempus lacus sit amet, maximus velit. Nulla facilisi. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas condimentum tortor massa, eget pellentesque justo efficitur nec. Sed faucibus quam eget neque facilisis rutrum a id diam. Nullam suscipit eget tortor id facilisis. Sed ut neque augue. Vestibulum ac tellus tellus. Mauris dapibus ipsum sit amet congue lobortis. Quisque purus risus, iaculis vel aliquam id, vulputate sed lectus.</p>
+
+			<p>Pellentesque odio felis, posuere et dictum et, tempor at magna. Sed dapibus lorem eu faucibus facilisis. In vel venenatis ligula. Mauris finibus neque vitae dapibus sagittis. Nulla tincidunt volutpat tellus ut tincidunt. Vivamus ligula sapien, ullamcorper ac accumsan in, semper eget tortor. Vestibulum bibendum augue in volutpat dignissim. Cras vel quam sit amet libero posuere elementum sit amet eget elit. Cras dictum dignissim ex. Integer et pellentesque elit. Sed feugiat tincidunt massa, id volutpat ex pretium sit amet. Aliquam accumsan imperdiet erat, nec pretium erat. Nullam pulvinar velit vel interdum faucibus. Nullam ut lacus odio.</p>
+		</div>
+	</div>
+
+	<div class="list-group">
+		@for (int j = 0; j < 4; j++)
+		{
+			<a href="@Url.Action("index", "home", new {Id = j, link = string.Format("link{0}", j)})"
+			   class="list-group-item list-group-item-@GetStatusValue(j)">
+				<span class="badge">@j</span>
+				LinkJ @j
+			</a>
+		}
+	</div>
+</div>
+
+
+
+
+
+
+
+

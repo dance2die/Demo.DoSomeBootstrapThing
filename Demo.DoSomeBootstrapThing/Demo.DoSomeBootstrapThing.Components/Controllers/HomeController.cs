@@ -24,5 +24,10 @@ namespace Demo.DoSomeBootstrapThing.Components.Controllers
 		{
 			return View();
 		}
+
+		public ActionResult Well()
+		{
+			return View();
+		}
 	}
 }
