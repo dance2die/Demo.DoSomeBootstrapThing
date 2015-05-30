@@ -1,0 +1,57 @@
+﻿@model System.Collections.Generic.List<string>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.isotope/2.2.0/isotope.pkgd.min.js"></script>
+
+@{
+	ViewBag.Title = "Glyphicon";
+}
+
+<style>
+	.grid-item {
+		float: left;
+		width: 200px;
+		height: 50px;
+		background: #e6e5e4;
+		border: 2px solid #b6b5b4;
+	}
+
+	.grid-item--width2 {
+		width: 50%;
+	}
+</style>
+
+<h2>Glyphicon</h2>
+
+<script language="javascript">
+	$('.grid').isotope({
+		itemSelector: '.grid-item',
+		layoutMode: 'fitRows'
+	});
+</script>
+
+<div  class="row">
+	<div class="grid">
+		@foreach (string glyphicon in @Model)
+		{
+			<div class="grid-item glyphicon @glyphicon">
+				@glyphicon
+			</div>
+		}
+</div></div >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
