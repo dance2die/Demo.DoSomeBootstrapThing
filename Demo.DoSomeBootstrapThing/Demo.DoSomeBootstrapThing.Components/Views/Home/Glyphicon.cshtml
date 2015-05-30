@@ -23,21 +23,31 @@
 <h2>Glyphicon</h2>
 
 <script language="javascript">
-	$('.grid').isotope({
-		itemSelector: '.grid-item',
-		layoutMode: 'fitRows'
+	$(function() {
+		$('.grid').isotope({
+			sortBy: "name",
+			itemSelector: '.grid-item',
+			layoutMode: 'fitRows',
+
+			getSortData: {
+				name: '.name'
+			}
+		});
 	});
 </script>
 
-<div  class="row">
+<div class="row">
 	<div class="grid">
 		@foreach (string glyphicon in @Model)
 		{
-			<div class="grid-item glyphicon @glyphicon">
-				@glyphicon
+			<div class="element-item">
+				<div class="grid-item glyphicon @glyphicon">
+					<h5 class="name">@glyphicon</h5>
+				</div>
 			</div>
 		}
-</div></div >
+	</div>
+</div>
 
 
 
