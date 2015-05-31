@@ -50,6 +50,11 @@ namespace Demo.DoSomeBootstrapThing.Components.Controllers
 			return View();
 		}
 
+		public ActionResult Navs()
+		{
+			return View();
+		}
+
 		private List<string> GetGlyphicons()
 		{
 			return new List<string>

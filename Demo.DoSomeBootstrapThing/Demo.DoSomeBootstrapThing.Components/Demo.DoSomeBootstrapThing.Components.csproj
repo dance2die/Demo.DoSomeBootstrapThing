@@ -129,6 +129,7 @@
     <Content Include="Views\Home\Isotope.cshtml" />
     <Content Include="Views\Home\Dropdown.cshtml" />
     <Content Include="Views\Home\ButtonGroups.cshtml" />
+    <Content Include="Views\Home\Navs.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
