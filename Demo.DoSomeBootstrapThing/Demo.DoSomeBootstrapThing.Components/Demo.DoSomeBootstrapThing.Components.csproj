@@ -130,6 +130,7 @@
     <Content Include="Views\Home\Dropdown.cshtml" />
     <Content Include="Views\Home\ButtonGroups.cshtml" />
     <Content Include="Views\Home\Navs.cshtml" />
+    <Content Include="Views\Home\Jumbotron.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
