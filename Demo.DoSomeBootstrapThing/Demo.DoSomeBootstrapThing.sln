@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.DoSomeBootstrapThing.L
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.DoSomeBootstrapThing.Components", "Demo.DoSomeBootstrapThing.Components\Demo.DoSomeBootstrapThing.Components.csproj", "{9C17C06F-0A0B-4C8B-935B-9F322D964223}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.DoSomeBootstrapThing.JS", "Demo.DoSomeBootstrapThing.JS\Demo.DoSomeBootstrapThing.JS.csproj", "{A047BBB2-F76B-4ED0-8A5B-F47260F31323}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9C17C06F-0A0B-4C8B-935B-9F322D964223}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C17C06F-0A0B-4C8B-935B-9F322D964223}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C17C06F-0A0B-4C8B-935B-9F322D964223}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A047BBB2-F76B-4ED0-8A5B-F47260F31323}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A047BBB2-F76B-4ED0-8A5B-F47260F31323}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A047BBB2-F76B-4ED0-8A5B-F47260F31323}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A047BBB2-F76B-4ED0-8A5B-F47260F31323}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
