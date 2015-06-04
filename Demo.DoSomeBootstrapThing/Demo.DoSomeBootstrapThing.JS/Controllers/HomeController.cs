@@ -17,5 +17,10 @@ namespace Demo.DoSomeBootstrapThing.JS.Controllers
         {
             return View();
         }
+
+        public ActionResult Dropdowns()
+        {
+            return View();
+        }
     }
 }
