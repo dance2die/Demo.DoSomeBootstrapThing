@@ -8,30 +8,70 @@
 @section Scripts {
 	<script language="javascript">
 		$(".dropdown").on("shown.bs.dropdown", function () {
-			alert("shown.bs.dropdown");
+			//alert("shown.bs.dropdown");
 		});
+
+		//$('#myTab a').click(function(e) {
+		//	e.preventDefault();
+		//	$(this).tab('show');
+		//});
+
+		$(function() {
+			activaTab("messages");
+		});
+
+		// http://stackoverflow.com/q/17830590/4035
+		function activaTab(tab) {
+			$('.nav-tabs a[href="#' + tab + '"]').tab('show');
+		};
 	</script>
 }
 
-<div class="dropdown">
-	<button id="dLabel" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		Dropdown trigger
-		<span class="caret"></span>
-	</button>
-	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-		<li><a href="#">Link 1</a></li>
-		<li><a href="#">Link 2</a></li>
-		<li><a href="#">Link 3</a></li>
+<!-- http://getbootstrap.com/javascript/#tabs -->
+<div role="tabpanel" id="myTab">
+	<!-- nav tabs -->
+	<ul class="nav nav-tabs">
+		<li class=""><a href="#home" data-toggle="tab">HOME</a></li>
+		<li><a href="#profile"  data-toggle="tab">PROFILE</a></li>
+		<li><a href="#messages"  data-toggle="tab">MESSAGES</a></li>
 	</ul>
+
+	<!-- Tab Panes -->
+	<div class="tab-content">
+		<div class="tab-pane active fade in" id="home">
+			<div class="dropdown">
+				<button id="dLabel" class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Dropdown trigger
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					<li><a href="#">Link 1</a></li>
+					<li><a href="#">Link 2</a></li>
+					<li><a href="#">Link 3</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="tab-pane fade" id="profile">
+			<div class="dropdown">
+				<a id="dLabel2" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
+					Dropdown trigger
+					<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					...
+				</ul>
+			</div>
+		</div>
+		<div class="tab-pane fade" id="messages">aaa</div>
+	</div>
 </div>
 
 
-<div class="dropdown">
-	<a id="dLabel2" data-target="#" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false">
-		Dropdown trigger
-		<span class="caret"></span>
-	</a>
-	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-		...
-	</ul>
-</div>
+
+
+
+
+
+
+
+
