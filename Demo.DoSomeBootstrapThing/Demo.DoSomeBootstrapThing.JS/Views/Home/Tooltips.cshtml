@@ -7,6 +7,7 @@
 	<script language="javascript">
 		$(function () {
 			$("[data-toggle='tooltip']").tooltip();
+			$("[data-toggle='popover']").popover();
 		});
 	</script>
 }
@@ -20,9 +21,14 @@
 <button class="btn btn-primary" data-toggle="tooltip" title="Tooltip on right" data-placement="right">RIGHT</button>
 
 
+<h2>Popover</h2>
 
+<button type="button" class="btn btn-success" data-toggle="popover" title="Popover Title" data-content="This is content" data-placement="left">Popover left</button>
+<button type="button" class="btn btn-success" data-toggle="popover" title="Popover Title" data-content="This is content" data-placement="top">Popover top</button>
+<button type="button" class="btn btn-success" data-toggle="popover" title="Popover Title" data-content="This is content" data-placement="bottom">Popover bottom</button>
+<button type="button" class="btn btn-success" data-toggle="popover" title="Popover Title" data-content="This is content" data-placement="right">Popover right</button>
 
-
+<a tabindex="0" role="button" class="btn btn-lg btn-warning" data-toggle="popover" data-trigger="focus" title="Dismissible Popover" data-content="content area">Diissibmisble popover</a>
 
 
 
