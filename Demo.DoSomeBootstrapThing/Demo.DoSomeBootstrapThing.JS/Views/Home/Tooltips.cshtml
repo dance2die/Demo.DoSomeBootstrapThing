@@ -1,0 +1,35 @@
+﻿@{
+	ViewBag.Title = "Tooltips";
+}
+
+@section Scripts
+{
+	<script language="javascript">
+		$(function () {
+			$("[data-toggle='tooltip']").tooltip();
+		});
+	</script>
+}
+
+<h2>Tooltips</h2>
+
+<button class="btn btn-primary" data-toggle="tooltip" title="Tooltip default" >DEFAULT</button>
+<button class="btn btn-primary" data-toggle="tooltip" title="Tooltip on left" data-placement="left">LEFT</button>
+<button class="btn btn-primary" data-toggle="tooltip" title="Tooltip on top" data-placement="top">TOP</button>
+<button class="btn btn-primary" data-toggle="tooltip" title="Tooltip on bottom" data-placement="bottom">BOTTOM</button>
+<button class="btn btn-primary" data-toggle="tooltip" title="Tooltip on right" data-placement="right">RIGHT</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

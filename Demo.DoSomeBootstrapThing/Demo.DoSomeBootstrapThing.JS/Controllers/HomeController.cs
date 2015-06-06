@@ -6,21 +6,26 @@ using System.Web.Mvc;
 
 namespace Demo.DoSomeBootstrapThing.JS.Controllers
 {
-    public class HomeController : Controller
-    {
-        public ActionResult Index()
-        {
-            return View();
-        }
+	public class HomeController : Controller
+	{
+		public ActionResult Index()
+		{
+			return View();
+		}
 
-        public ActionResult VaryingContent()
-        {
-            return View();
-        }
+		public ActionResult VaryingContent()
+		{
+			return View();
+		}
 
-        public ActionResult Dropdowns()
-        {
-            return View();
-        }
-    }
+		public ActionResult Dropdowns()
+		{
+			return View();
+		}
+
+		public ActionResult Tooltips()
+		{
+			return View();
+		}
+	}
 }
