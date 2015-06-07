@@ -27,5 +27,10 @@ namespace Demo.DoSomeBootstrapThing.JS.Controllers
 		{
 			return View();
 		}
+
+		public ActionResult Button()
+		{
+			return View();
+		}
 	}
 }

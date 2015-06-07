@@ -121,6 +121,7 @@
     <Content Include="Views\Home\VaryingContent.cshtml" />
     <Content Include="Views\Home\Dropdowns.cshtml" />
     <Content Include="Views\Home\Tooltips.cshtml" />
+    <Content Include="Views\Home\Button.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

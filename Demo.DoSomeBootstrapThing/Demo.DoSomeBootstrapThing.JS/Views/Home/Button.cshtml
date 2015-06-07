@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Button";
+}
+
+@section Scripts
+{
+	<script language="javascript">
+		$("#loadingButton").on("click", function () {
+			var $btn = $(this).button("loading");
+
+			//window.setTimeout(function() {
+			//	alert("hi");
+			//}, 3000);
+
+			$btn.button("reset");
+		});
+
+	</script>
+}
+
+<h2>Button</h2>
+
+<button type="button" id="loadingButton" data-loading-text="Loading..." class="btn btn-success">
+	Loading Button
+</button>
+
+
+
+
+
+
