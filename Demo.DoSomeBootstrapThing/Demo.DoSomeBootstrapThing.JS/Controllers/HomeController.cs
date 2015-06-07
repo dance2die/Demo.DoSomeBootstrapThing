@@ -42,5 +42,10 @@ namespace Demo.DoSomeBootstrapThing.JS.Controllers
 		{
 			return View();
 		}
+
+		public ActionResult Carousel()
+		{
+			return View();
+		}
 	}
 }

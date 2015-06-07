@@ -1,0 +1,81 @@
+﻿@{
+	ViewBag.Title = "Carousel";
+}
+
+@functions
+{
+	public string[] GetImagePaths()
+	{
+		return Directory.GetFiles(Context.Server.MapPath(@"~/Images"));
+	}
+}
+
+<h2>Carousel</h2>
+
+
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="width: 400px">
+	<!-- Indicators -->
+	<ol class="carousel-indicators">
+		@{
+			var counter1 = 0;
+			foreach (var imagePath in GetImagePaths())
+			{
+				var itemClass = (counter1 == 0 ? " active" : "");
+
+				<li data-target="#carousel-example-generic" data-slide-to="@counter1" class="@itemClass"></li>
+
+				counter1++;
+			}
+		}
+	</ol>
+	<!-- Wrapper for slides -->
+	<div class="carousel-inner" role="listbox">
+		@{
+			var counter2 = 0;
+			foreach (var imagePath in GetImagePaths())
+			{
+				var itemClass = "item" + (counter2 == 0 ? " active" : "");
+				var fileName = Path.GetFileName(imagePath);
+				var relPath = @"~/Images/" + fileName;
+				
+				<div class="@itemClass">
+					<img src="@Url.Content(@relPath)" alt="@fileName">
+					<div class="carousel-caption">
+						@fileName
+					</div>
+				</div>
+
+				counter2++;
+			}
+		}
+	</div>
+	<!-- Controls -->
+	<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		<span class="sr-only">Previous</span>
+	</a>
+	<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		<span class="sr-only">Next</span>
+	</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
