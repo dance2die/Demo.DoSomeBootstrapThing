@@ -32,5 +32,10 @@ namespace Demo.DoSomeBootstrapThing.JS.Controllers
 		{
 			return View();
 		}
+
+		public ActionResult Collapse()
+		{
+			return View();
+		}
 	}
 }
