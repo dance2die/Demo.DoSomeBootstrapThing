@@ -37,5 +37,10 @@ namespace Demo.DoSomeBootstrapThing.JS.Controllers
 		{
 			return View();
 		}
+
+		public ActionResult Accordian()
+		{
+			return View();
+		}
 	}
 }

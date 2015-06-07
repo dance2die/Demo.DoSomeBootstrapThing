@@ -123,6 +123,7 @@
     <Content Include="Views\Home\Tooltips.cshtml" />
     <Content Include="Views\Home\Button.cshtml" />
     <Content Include="Views\Home\Collapse.cshtml" />
+    <Content Include="Views\Home\Accordian.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
