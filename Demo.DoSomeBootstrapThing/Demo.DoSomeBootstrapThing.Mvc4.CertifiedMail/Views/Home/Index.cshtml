@@ -9,6 +9,9 @@
 	<link href="~/Content/Home/Index.css" rel="stylesheet" />
 }
 
+@section Script {
+	
+}
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -16,9 +19,9 @@
 	</div>
 	<div class="panel-body">
 		<div class="row">
-			<div class="col-sm-4 col-sm-offset-1">
+			<div class="col-sm-4 searchPanel">
 				<div class="panel panel-default">
-					<div class="panel-body">
+					<div class="panel-body searchPanelBody">
 						<div class="row">
 							@using (Html.BeginForm("SearchByClient", "Home", FormMethod.Post,
 								new { id = "searchByClientForm", @class = "form-horizontal" }))
@@ -72,20 +75,26 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-7 result">
+			<div class="col-sm-8 result">
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<fieldset>
 							<legend>Search Result</legend>
+
+
 						</fieldset>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="container"></div>
+		<div class="container">
+			<button class="btn btn-default">Generate Batch ID</button>
+		</div>
 
-		<div class="container"></div>
+		<div class="container">
+			
+		</div>
 	</div>
 </div>
 
