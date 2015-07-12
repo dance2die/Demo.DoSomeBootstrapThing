@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -14,14 +15,24 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 			return View(new HomeModel());
 		}
 
+		[HttpPost]
 		public ActionResult SearchByClient(HomeModel model)
 		{
 			return View("Index", model);
 		}
 
+		[HttpPost]
 		public ActionResult Upload(HttpPostedFileBase file)
 		{
-			return View("Index", new HomeModel());
+			if (file != null && file.ContentLength > 0)
+			{
+				var fileName = Path.GetFileName(file.FileName);
+				var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+				file.SaveAs(path);
+			}
+
+			//return View("Index", new HomeModel());
+			return RedirectToAction("Index");
 		}
 	}
 }
