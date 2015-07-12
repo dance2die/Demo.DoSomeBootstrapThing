@@ -6,16 +6,16 @@
 
 	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 	<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
-	@RenderSection("CSS", false);
+	@RenderSection("CSS", false)
 
 	<script src="~/Scripts/jquery-2.1.4.min.js"></script>
 	<script src="~/Scripts/bootstrap.min.js"></script>
-	@RenderSection("Script", false);
+	@RenderSection("Script", false)
 
 	<title>@ViewBag.Title</title>
 </head>
 <body>
-	<div>
+	<div class="container body-content">
 		@RenderBody()
 	</div>
 </body>
