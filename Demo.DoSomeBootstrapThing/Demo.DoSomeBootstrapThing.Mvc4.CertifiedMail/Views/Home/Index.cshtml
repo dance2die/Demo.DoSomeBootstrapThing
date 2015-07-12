@@ -24,26 +24,26 @@
 						<legend>Search by Client</legend>
 
 						@{
-					var labelObject = new { @class = "col-md-3 control-label" };
-					var textBoxObject = new { @class = "form-control" };
+							var labelAttributes = new { @class = "col-sm-3 control-label" };
+							var textBoxAttributes = new { @class = "form-control input-sm" };
 						}
 
 						<div class="form-group">
-							@Html.LabelFor(m => m.FileNumber, labelObject)
-							<div class="col-md-9">@Html.TextBoxFor(m => m.FileNumber, textBoxObject)</div>
+							@Html.LabelFor(m => m.FileNumber, labelAttributes)
+							<div class="col-sm-9">@Html.TextBoxFor(m => m.FileNumber, textBoxAttributes)</div>
 						</div>
 
 						<div class="form-group">
-							@Html.LabelFor(m => m.FirstName, labelObject)
-							<div class="col-md-9">@Html.TextBoxFor(m => m.FirstName, textBoxObject)</div>
+							@Html.LabelFor(m => m.FirstName, labelAttributes)
+							<div class="col-sm-9">@Html.TextBoxFor(m => m.FirstName, textBoxAttributes)</div>
 						</div>
 
 						<div class="form-group">
-							@Html.LabelFor(m => m.LastName, labelObject)
-							<div class="col-md-9">@Html.TextBoxFor(m => m.LastName, textBoxObject)</div>
+							@Html.LabelFor(m => m.LastName, labelAttributes)
+							<div class="col-sm-9">@Html.TextBoxFor(m => m.LastName, textBoxAttributes)</div>
 						</div>
 
-						<button type="submit" class="btn btn-default">Search by Client</button>
+						<button type="submit" class="btn btn-default submitButton">Search by Client</button>
 					</fieldset>
 				}
 			</div>
@@ -62,7 +62,7 @@
 							<div class="form-group">
 								<input type="file" class="form-control" name="file" id="file" />
 							</div>
-							<button type="submit" class="btn btn-default">Upload File</button>
+							<button type="submit" class="btn btn-default submitButton">Upload File</button>
 						</fieldset>
 					}
 				</div>

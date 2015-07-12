@@ -1,4 +1,12 @@
 ﻿.OR {
 	display: inline-block;
-    vertical-align: middle;
+	vertical-align: middle;
+}
+
+.form-group {
+	height: 1.0em;
+}
+
+.submitButton {
+	margin-top: 10px;
 }
