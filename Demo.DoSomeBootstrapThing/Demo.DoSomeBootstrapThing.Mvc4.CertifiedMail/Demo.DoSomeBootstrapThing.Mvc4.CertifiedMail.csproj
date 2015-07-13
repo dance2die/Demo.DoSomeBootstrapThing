@@ -437,6 +437,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
+    <Content Include="Scripts\Home\Index.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
     <Content Include="Scripts\JQWidgets\globalization\globalize.culture.cs-CZ.js" />
@@ -460,12 +461,16 @@
     <Content Include="Scripts\JQWidgets\jqxbuttongroup.js" />
     <Content Include="Scripts\JQWidgets\jqxbuttons.js" />
     <Content Include="Scripts\JQWidgets\jqxcalendar.js" />
+    <Content Include="Scripts\JQWidgets\jqxchart.annotations.js" />
+    <Content Include="Scripts\JQWidgets\jqxchart.api.js" />
     <Content Include="Scripts\JQWidgets\jqxchart.core.js" />
     <Content Include="Scripts\JQWidgets\jqxchart.js" />
     <Content Include="Scripts\JQWidgets\jqxchart.rangeselector.js" />
+    <Content Include="Scripts\JQWidgets\jqxchart.waterfall.js" />
     <Content Include="Scripts\JQWidgets\jqxcheckbox.js" />
     <Content Include="Scripts\JQWidgets\jqxcolorpicker.js" />
     <Content Include="Scripts\JQWidgets\jqxcombobox.js" />
+    <Content Include="Scripts\JQWidgets\jqxcomplexinput.js" />
     <Content Include="Scripts\JQWidgets\jqxcore.js" />
     <Content Include="Scripts\JQWidgets\jqxdata.export.js" />
     <Content Include="Scripts\JQWidgets\jqxdata.js" />
@@ -479,6 +484,8 @@
     <Content Include="Scripts\JQWidgets\jqxdropdownlist.js" />
     <Content Include="Scripts\JQWidgets\jqxeditor.js" />
     <Content Include="Scripts\JQWidgets\jqxexpander.js" />
+    <Content Include="Scripts\JQWidgets\jqxfileupload.js" />
+    <Content Include="Scripts\JQWidgets\jqxformattedinput.js" />
     <Content Include="Scripts\JQWidgets\jqxgauge.js" />
     <Content Include="Scripts\JQWidgets\jqxgrid.aggregates.js" />
     <Content Include="Scripts\JQWidgets\jqxgrid.columnsreorder.js" />
@@ -498,6 +505,7 @@
     <Content Include="Scripts\JQWidgets\jqxlistmenu.js" />
     <Content Include="Scripts\JQWidgets\jqxmaskedinput.js" />
     <Content Include="Scripts\JQWidgets\jqxmenu.js" />
+    <Content Include="Scripts\JQWidgets\jqxnavbar.js" />
     <Content Include="Scripts\JQWidgets\jqxnavigationbar.js" />
     <Content Include="Scripts\JQWidgets\jqxnotification.js" />
     <Content Include="Scripts\JQWidgets\jqxnumberinput.js" />
@@ -508,12 +516,14 @@
     <Content Include="Scripts\JQWidgets\jqxrangeselector.js" />
     <Content Include="Scripts\JQWidgets\jqxrating.js" />
     <Content Include="Scripts\JQWidgets\jqxresponse.js" />
+    <Content Include="Scripts\JQWidgets\jqxribbon.js" />
     <Content Include="Scripts\JQWidgets\jqxscrollbar.js" />
     <Content Include="Scripts\JQWidgets\jqxscrollview.js" />
     <Content Include="Scripts\JQWidgets\jqxslider.js" />
     <Content Include="Scripts\JQWidgets\jqxsplitter.js" />
     <Content Include="Scripts\JQWidgets\jqxswitchbutton.js" />
     <Content Include="Scripts\JQWidgets\jqxtabs.js" />
+    <Content Include="Scripts\JQWidgets\jqxtoolbar.js" />
     <Content Include="Scripts\JQWidgets\jqxtooltip.js" />
     <Content Include="Scripts\JQWidgets\jqxtouch.js" />
     <Content Include="Scripts\JQWidgets\jqxtree.js" />

@@ -10,7 +10,24 @@
 }
 
 @section Script {
-	
+
+	<script src="~/Scripts/angular.js"></script>
+	<script src="~/Scripts/angular-route.js"></script>
+
+
+	<script src="~/Scripts/jqwidgets/jqxcore.js"></script>
+	<script src="~/Scripts/JQWidgets/jqxcheckbox.js"></script>
+	<script src="~/Scripts/jqwidgets/jqxbuttons.js"></script>
+	<script src="~/Scripts/jqwidgets/jqxscrollbar.js"></script>
+	<script src="~/Scripts/jqwidgets/jqxmenu.js"></script>
+	<script src="~/Scripts/jqwidgets/jqxgrid.js"></script>
+	<script src="~/Scripts/JQWidgets/jqxgrid.edit.js"></script>
+	<script src="~/Scripts/jqwidgets/jqxgrid.selection.js"></script>
+	<script src="~/Scripts/jqwidgets/jqxgrid.columnsresize.js"></script>
+	<script src="~/Scripts/jqwidgets/jqxdata.js"></script>
+	<script src="~/Scripts/JQWidgets/jqxangular.js"></script>
+
+	<script src="~/Scripts/Home/Index.js"></script>
 }
 
 <div class="panel panel-default">
@@ -19,6 +36,8 @@
 	</div>
 	<div class="panel-body">
 		<div class="row">
+
+			<!-- Search Criteria Panel -->
 			<div class="col-sm-5 searchPanel">
 				<div class="panel panel-default">
 					<div class="panel-body searchPanelBody">
@@ -30,8 +49,8 @@
 									<legend>Search by Client</legend>
 
 									@{
-								var labelAttributes = new { @class = "col-sm-4 control-label" };
-								var textBoxAttributes = new { @class = "form-control input-sm" };
+										var labelAttributes = new { @class = "col-sm-4 control-label" };
+										var textBoxAttributes = new { @class = "form-control input-sm" };
 									}
 
 									<div class="form-group">
@@ -75,12 +94,19 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- Search Result Panel -->
 			<div class="col-sm-7 result">
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<fieldset>
 							<legend>Search Result</legend>
 
+							<jqx-grid jqx-on-bindingcomplete="bindingComplete()"
+									  jqx-instance="grid"
+									  jqx-create="createWidget"
+									  jqx-settings="gridSettings">
+							</jqx-grid>
 
 						</fieldset>
 					</div>
@@ -92,14 +118,12 @@
 			<button class="btn btn-default">Generate Batch ID</button>
 		</div>
 
+		<!-- Added search result panel -->
 		<div class="container">
-			
+
 		</div>
 	</div>
 </div>
-
-
-
 
 
 
