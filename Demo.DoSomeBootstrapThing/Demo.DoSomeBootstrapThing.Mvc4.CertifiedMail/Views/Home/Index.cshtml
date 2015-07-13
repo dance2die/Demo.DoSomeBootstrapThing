@@ -6,6 +6,9 @@
 }
 
 @section CSS {
+	<link href="~/Content/JQWidgets/jqx.base.css" rel="stylesheet" />
+	<link href="~/Content/JQWidgets/jqx.bootstrap.css" rel="stylesheet" />
+
 	<link href="~/Content/Home/Index.css" rel="stylesheet" />
 }
 
@@ -13,7 +16,6 @@
 
 	<script src="~/Scripts/angular.js"></script>
 	<script src="~/Scripts/angular-route.js"></script>
-
 
 	<script src="~/Scripts/jqwidgets/jqxcore.js"></script>
 	<script src="~/Scripts/JQWidgets/jqxcheckbox.js"></script>
@@ -30,7 +32,7 @@
 	<script src="~/Scripts/Home/Index.js"></script>
 }
 
-<div class="panel panel-default">
+<div ng-controller="gridCtrl" class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">W&amp;L Certified Mail</h3>
 	</div>
@@ -49,8 +51,8 @@
 									<legend>Search by Client</legend>
 
 									@{
-										var labelAttributes = new { @class = "col-sm-4 control-label" };
-										var textBoxAttributes = new { @class = "form-control input-sm" };
+								var labelAttributes = new { @class = "col-sm-4 control-label" };
+								var textBoxAttributes = new { @class = "form-control input-sm" };
 									}
 
 									<div class="form-group">
@@ -98,7 +100,7 @@
 			<!-- Search Result Panel -->
 			<div class="col-sm-7 result">
 				<div class="panel panel-default">
-					<div class="panel-body">
+					<div class="panel-body searchResultPanel">
 						<fieldset>
 							<legend>Search Result</legend>
 
@@ -124,6 +126,8 @@
 		</div>
 	</div>
 </div>
+
+
 
 
 

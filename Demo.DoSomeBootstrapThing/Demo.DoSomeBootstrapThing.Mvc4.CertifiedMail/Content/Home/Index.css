@@ -11,6 +11,12 @@
 	margin-top: 10px;
 }
 
+.searchResultPanel {
+	width: auto;
+	overflow: auto;
+}
+
 .searchPanelBody {
 	padding: 35px;
 }
+

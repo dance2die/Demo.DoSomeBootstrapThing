@@ -1,6 +1,6 @@
 ﻿var app = angular.module("app", ["ngRoute", "jqwidgets"]);
 
-app.controller("demoController", function ($scope, $http) {
+app.controller("gridCtrl", function ($scope, $http) {
 	$scope.createWidget = false;
 
 	$http({

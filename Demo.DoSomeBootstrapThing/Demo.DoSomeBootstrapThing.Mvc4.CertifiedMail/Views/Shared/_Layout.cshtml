@@ -1,21 +1,22 @@
 ﻿<!DOCTYPE html>
 
-<html>
+<html ng-app="app">
 <head>
 	<meta name="viewport" content="width=device-width" />
 
 	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-	<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+	<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet"/>
 	@RenderSection("CSS", false)
 
 	<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+	<script src="~/Scripts/modernizr-2.8.3.js"></script>
 	<script src="~/Scripts/bootstrap.min.js"></script>
 	@RenderSection("Script", false)
 
 	<title>@ViewBag.Title</title>
 </head>
 <body>
-	<div class="container">
+	<div class="row">
 		@RenderBody()
 	</div>
 </body>
