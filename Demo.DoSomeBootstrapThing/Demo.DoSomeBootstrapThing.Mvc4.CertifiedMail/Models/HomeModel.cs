@@ -1,6 +1,4 @@
-﻿using System.Web;
-
-namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Models
+﻿namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Models
 {
 	public class HomeModel
 	{
