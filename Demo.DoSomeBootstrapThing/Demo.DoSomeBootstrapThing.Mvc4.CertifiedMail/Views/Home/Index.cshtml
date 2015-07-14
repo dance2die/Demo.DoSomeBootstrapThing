@@ -110,6 +110,8 @@
 									  jqx-settings="gridSettings">
 							</jqx-grid>
 
+							@*<input id="addToFinalResultButton" type="button" value="Add to Result" />*@
+							<button id="addToFinalResultButton" jqx-button ng-click="addToFinalResultClick()">Add to Result</button>
 						</fieldset>
 					</div>
 				</div>
@@ -125,7 +127,7 @@
 			<jqx-grid jqx-on-bindingcomplete="bindingComplete()"
 					  jqx-instance="grid"
 					  jqx-create="createWidget"
-					  jqx-settings="gridSettings">
+					  jqx-settings="resultGridSettings">
 			</jqx-grid>
 		</div>
 	</div>
