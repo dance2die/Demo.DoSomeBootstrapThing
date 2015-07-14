@@ -1,5 +1,4 @@
 ﻿var app = angular.module("app", ["ngRoute", "jqwidgets"]);
-
 app.controller("gridCtrl", function ($scope, $http) {
 	$scope.createWidget = false;
 
@@ -57,3 +56,53 @@ app.controller("gridCtrl", function ($scope, $http) {
 		//alert("binding is completed");
 	}
 });
+
+// get all selected records.
+// http://www.jqwidgets.com/community/topic/select-multiple-rows-and-get-there-values-using-checkbox/
+function getSelectedRows(gridId) {
+	var grid = $("#" + gridId);
+	var rowIndexes = grid.jqxGrid('selectedrowindexes');
+	var selectedRows = new Array();
+
+	for (var i = 0; i < rowIndexes.length; i++) {
+		var row = grid.jqxGrid('getrowdata', rowIndexes[i]);
+		selectedRows[selectedRows.length] = row;
+	}
+
+	return selectedRows;
+}
+
+
+// Copy
+// http://stackoverflow.com/q/4946235
+// http://www.jqwidgets.com/jquery-widgets-demo/demos/jqxgrid/#demos/jqxgrid/createremoveupdatedata.htm
+function copySelected(fromGridId, toGridId, fromGridRowIndex) {
+	var fromGrid = $("#" + fromGridId);
+	var rowId = fromGrid.jqxGrid("getrowid", fromGridRowIndex);
+
+	if (rowId != null) {
+		fromGrid.jqxGrid('deleterow', rowId);
+
+		var toGrid = $("#" + toGridId);
+		var rowData = fromGrid.jqGrid('getrowdatabyid', rowId);
+		toGrid.jqxGrid('addrow', null, rowData);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
