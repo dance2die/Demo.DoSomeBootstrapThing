@@ -29,7 +29,7 @@ app.controller("gridCtrl", function ($scope, $http) {
 
 		$scope.gridSettings =
 		{
-			width: 850,
+			width: "100%",
 			height: 300,
 			ready: function () {
 				//$scope.grid.selectrow(1);
