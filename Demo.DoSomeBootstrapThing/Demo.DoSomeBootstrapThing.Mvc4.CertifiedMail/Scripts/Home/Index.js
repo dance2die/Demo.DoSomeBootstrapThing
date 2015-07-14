@@ -34,7 +34,7 @@ app.controller("gridCtrl", function ($scope, $http) {
 				//$scope.grid.selectrow(1);
 			},
 			source: dataAdapter,
-			editable: true,
+			editable: false,
 			selectionmode: 'checkbox',
 			columnsresize: true,
 			columns: [
@@ -82,7 +82,11 @@ app.controller("gridCtrl", function ($scope, $http) {
 
 		var selectedRows = getSelectedRows("jqxGrid0");
 		addRowsToGrid("jqxGrid1", selectedRows);
-		deleteRowsFromGrid("jqxGrid0", getSelectedRowIds("jqxGrid0"));
+
+		var selectedRowIds = getSelectedRowIds("jqxGrid0");
+		deleteRowsFromGrid("jqxGrid0", selectedRowIds);
+
+		clearGridSelections("jqxGrid0");
 
 		$("#jqxGrid0").jqxGrid("resumeupdate");
 		$("#jqxGrid1").jqxGrid("resumeupdate");
@@ -90,24 +94,23 @@ app.controller("gridCtrl", function ($scope, $http) {
 });
 
 
-//$(document).ready(function () {
-//	$("#addToFinalResultButton").jqxButton();
-//	$("#addToFinalResultButton").on("click", function () {
-//		var selectedRows = getSelectedRowIndexes("jqxGrid0");
-//		for (var i = 0; i < selectedRows.length - 1; i++) {
-//			moveSelected("jqxGrid0", "jqxGrid1", selectedRows[i]);
-//		}
-//	});
-//});
-
-
+function clearGridSelections(gridId) {
+	var grid = $("#" + gridId);
+	grid.jqxGrid("clearselection");
+}
 
 function addRowsToGrid(toGridId, rowsToAdd) {
 	$("#" + toGridId).jqxGrid("addrow", null, rowsToAdd);
 }
 
-function deleteRowsFromGrid(fromGrid, rowIndexesToDelete) {
-	$("#" + fromGrid).jqxGrid("deleterow", rowIndexesToDelete);
+function deleteRowsFromGrid(fromGrid, rowIdsToDelete) {
+	var rows = [];
+	for (var i = 0; i < rowIdsToDelete.length; i++)
+	{
+		rows.push(rowIdsToDelete[i]);
+	}
+
+	$("#" + fromGrid).jqxGrid("deleterow", rows);
 }
 
 // get all selected records.
@@ -136,8 +139,9 @@ function getSelectedRowIds(gridId) {
 	var selectedRows = new Array();
 
 	for (var i = 0; i < rowIndexes.length; i++) {
-		var row = grid.jqxGrid('getrowdata', rowIndexes[i]);
-		selectedRows[selectedRows.length] = row.uid;
+		//var row = grid.jqxGrid('getrowdata', rowIndexes[i]);
+		var rowId = grid.jqxGrid('getrowid', rowIndexes[i]);
+		selectedRows[selectedRows.length] = rowId;
 	}
 
 	return selectedRows;
