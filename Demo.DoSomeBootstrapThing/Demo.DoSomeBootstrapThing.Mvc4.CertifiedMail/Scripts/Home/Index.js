@@ -39,10 +39,10 @@ app.controller("gridCtrl", function ($scope, $http) {
 			columnsresize: true,
 			columns: [
 				{ text: 'Name', datafield: 'name', width: 250 },
-				{ text: 'Beverage Type', datafield: 'type', width: 250 },
-				{ text: 'Calories', datafield: 'calories', width: 180 },
-				{ text: 'Total Fat', datafield: 'totalfat', width: 120 },
-				{ text: 'Protein', datafield: 'protein', minwidth: 120 }
+				{ text: 'Beverage Type', datafield: 'type', width: 250 }
+				//{ text: 'Calories', datafield: 'calories', width: 180 },
+				//{ text: 'Total Fat', datafield: 'totalfat', width: 120 },
+				//{ text: 'Protein', datafield: 'protein', minwidth: 120 }
 			]
 		};
 
