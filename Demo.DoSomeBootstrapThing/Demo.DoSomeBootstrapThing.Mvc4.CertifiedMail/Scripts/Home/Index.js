@@ -72,6 +72,7 @@ app.controller("gridCtrl", function ($scope, $http) {
 	}
 
 	$scope.addToFinalResultClick = function () {
+		// http://www.jqwidgets.com/create-remove-or-update-many-grid-rows/
 		$("#jqxGrid0").jqxGrid("beginupdate");
 		$("#jqxGrid1").jqxGrid("beginupdate");
 
