@@ -46,6 +46,7 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 			//serializer.Serialize(stringwriter, models);
 			//var xmlString = stringwriter.ToString();
 
+			// http://forums.asp.net/t/1961502.aspx?Convert+List+to+XML+string+C+
 			XElement xml = null;
 			if (models != null)
 			{
