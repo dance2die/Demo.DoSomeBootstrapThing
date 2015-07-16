@@ -29,7 +29,7 @@ app.controller("gridCtrl", function ($scope, $http) {
 		$scope.gridSettings =
 		{
 			width: "100%",
-			height: 300,
+			height: "100%",
 			ready: function () {
 				//$scope.grid.selectrow(1);
 			},
@@ -91,6 +91,28 @@ app.controller("gridCtrl", function ($scope, $http) {
 
 		$("#jqxGrid0").jqxGrid("resumeupdate");
 		$("#jqxGrid1").jqxGrid("resumeupdate");
+	}
+
+	$scope.generateBatchIDClick = function(url) {
+		var finalGridRows = getSelectedRows("jqxGrid1");
+		var data = JSON.stringify(getSelectedRows("jqxGrid1"));
+		console.log(finalGridRows);
+
+
+		// http://stackoverflow.com/a/21597418/4035
+		jQuery.ajax({
+			type: 'POST',
+			url: url,
+			contentType: "application/json; charset=utf-8",
+			datatype: 'json',
+			data: data,
+			success: function(data) {
+				 alert(data);
+			},
+			failure: function (errMsg) {
+				alert(errMsg);
+			}
+		});
 	}
 });
 

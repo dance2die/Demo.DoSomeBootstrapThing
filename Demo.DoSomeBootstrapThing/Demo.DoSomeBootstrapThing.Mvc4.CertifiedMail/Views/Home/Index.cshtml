@@ -119,7 +119,17 @@
 		</div>
 
 		<div class="container-fluid">
-			<button class="btn btn-default">Generate Batch ID</button>
+			<div class="row">
+				<div class="panel panel-default col-sm-3">
+					<div class="panel-body">
+						@*@using (Html.BeginForm("GenerateBatchId", "Home", FormMethod.Post))*@
+						@using (Html.BeginForm("GenerateBatchId", "Home", FormMethod.Post))
+						{
+							<button class="btn btn-success" type="submit" ng-click="generateBatchIDClick('home/GenerateBatchId')">Generate Batch ID</button>
+						}
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<!-- Added search result panel -->

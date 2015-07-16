@@ -34,5 +34,16 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 			//return View("Index", new HomeModel());
 			return RedirectToAction("Index");
 		}
+
+		[HttpPost]
+		public ActionResult GenerateBatchId(List<BeverageModel> models)
+		{
+			// Generate Batch ID.
+			// Pass Batch ID to the URL.
+
+			//var url = "http://www.gmail.com";
+			//return Redirect(url);
+			return RedirectToAction("Index", models);
+		}
 	}
 }
