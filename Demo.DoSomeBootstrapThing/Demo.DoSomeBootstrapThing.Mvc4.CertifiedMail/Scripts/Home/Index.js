@@ -2,6 +2,32 @@
 app.controller("gridCtrl", function ($scope, $http) {
 	$scope.createWidget = false;
 
+	var usStates = [
+		{ state_ID: "AE" }, { state_ID: "AL" }, { state_ID: "AK" }, { state_ID: "AZ" }, { state_ID: "AR" },
+		{ state_ID: "CA" }, { state_ID: "CO" }, { state_ID: "CT" }, { state_ID: "DE" }, { state_ID: "DC" },
+		{ state_ID: "FL" }, { state_ID: "GA" }, { state_ID: "HI" }, { state_ID: "ID" }, { state_ID: "IL" },
+		{ state_ID: "IN" }, { state_ID: "IA" }, { state_ID: "KS" }, { state_ID: "KY" }, { state_ID: "LA" },
+		{ state_ID: "ME" }, { state_ID: "MD" }, { state_ID: "MA" }, { state_ID: "MI" }, { state_ID: "MN" },
+		{ state_ID: "MS" }, { state_ID: "MO" }, { state_ID: "MT" }, { state_ID: "NE" }, { state_ID: "NV" },
+		{ state_ID: "NH" }, { state_ID: "NJ" }, { state_ID: "NM" }, { state_ID: "NY" }, { state_ID: "NC" },
+		{ state_ID: "ND" }, { state_ID: "NK" }, { state_ID: "OH" }, { state_ID: "OK" }, { state_ID: "OR" },
+		{ state_ID: "PA" }, { state_ID: "PR" }, { state_ID: "RI" }, { state_ID: "SC" }, { state_ID: "SD" },
+		{ state_ID: "TN" }, { state_ID: "TX" }, { state_ID: "VI" }, { state_ID: "UT" }, { state_ID: "VT" },
+		{ state_ID: "VA" }, { state_ID: "WA" }, { state_ID: "WV" }, { state_ID: "WI" }, { state_ID: "WY" }
+	];
+
+	// http://www.jqwidgets.com/jquery-widgets-demo/demos/jqxgrid/#demos/jqxgrid/customcomboboxcolumn.htm
+	var statesSource =
+		{
+			datatype: "array",
+			datafields: [
+				{ name: 'state_ID', type: 'string' }
+			],
+			localdata: usStates
+		};
+	var statesAdapter = new $.jqx.dataAdapter(statesSource, { autoBind: true });
+
+
 	$http({
 		method: 'get',
 		//url: '../sampledata/beverages-simple.txt'
@@ -54,7 +80,13 @@ app.controller("gridCtrl", function ($scope, $http) {
 			selectionmode: 'checkbox',
 			columnsresize: true,
 			columns: [
-				{ text: 'Name', datafield: 'name', width: 250 },
+				{
+					text: 'Name', datafield: 'name', width: 250,
+					columntype: 'combobox',
+					createeditor: function (row, value, editor) {
+						editor.jqxComboBox({ source: statesAdapter, displayMember: 'state_ID', valueMember: 'state_ID' });
+					}
+				},
 				{ text: 'Beverage Type', datafield: 'type', width: 250 },
 				{ text: 'Calories', datafield: 'calories', width: 180 },
 				{ text: 'Total Fat', datafield: 'totalfat', width: 120 },
