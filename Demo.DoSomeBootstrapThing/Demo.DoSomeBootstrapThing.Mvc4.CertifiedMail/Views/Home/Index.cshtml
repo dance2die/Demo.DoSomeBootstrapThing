@@ -34,11 +34,24 @@
 	<script src="~/Scripts/JQWidgets/jqxangular.js"></script>
 
 	<script src="~/Scripts/Home/Index.js"></script>
+
+	<script language="javascript">
+		@{
+			var jsonData = "";
+			if (!string.IsNullOrWhiteSpace(ViewBag.JsonData))
+			{
+				jsonData = ViewBag.JsonData;
+			}
+		}
+
+		var app = angular.module("app");
+		app.value("jsonData", '@Html.Raw(jsonData)');
+	</script>
 }
 
 <div ng-controller="gridCtrl" class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">W&amp;L Certified Mail</h3>
+		<h3 class="panel-title">Certified Mail</h3>
 	</div>
 	<div class="panel-body">
 		<div class="row">

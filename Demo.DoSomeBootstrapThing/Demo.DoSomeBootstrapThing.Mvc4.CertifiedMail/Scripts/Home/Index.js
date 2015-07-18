@@ -1,5 +1,5 @@
 ﻿var app = angular.module("app", ["ngRoute", "jqwidgets"]);
-app.controller("gridCtrl", function ($scope, $http) {
+app.controller("gridCtrl", function ($scope, $http, jsonData) {
 	$scope.createWidget = false;
 
 	var usStates = [
@@ -34,7 +34,14 @@ app.controller("gridCtrl", function ($scope, $http) {
 		url: '../sampledata/beverages.txt'
 	}).success(function (data, status) {
 		// prepare the data
-		var source =
+
+		$scope.createWidget = true;
+	}).error(function (data, status) {
+		// Some error occurred
+	});
+
+
+	var source =
 		{
 			datatype: "json",
 			datafields: [
@@ -46,58 +53,56 @@ app.controller("gridCtrl", function ($scope, $http) {
 				{ name: 'protein', type: 'string' }
 			],
 			id: 'id',
-			localdata: data
+			//localdata: data
+			localdata: jsonData
 		};
-		var dataAdapter = new $.jqx.dataAdapter(source);
+	var dataAdapter = new $.jqx.dataAdapter(source);
 
-		$scope.grid = {};
+	$scope.grid = {};
 
-		$scope.gridSettings =
-		{
-			width: "100%",
-			height: "100%",
-			ready: function () {
-				//$scope.grid.selectrow(1);
+	$scope.gridSettings =
+	{
+		width: "100%",
+		height: "100%",
+		ready: function () {
+			//$scope.grid.selectrow(1);
+		},
+		source: dataAdapter,
+		editable: false,
+		selectionmode: 'checkbox',
+		columnsresize: true,
+		columns: [
+			{ text: 'Name', datafield: 'name', width: 250 },
+			{ text: 'Beverage Type', datafield: 'type', width: 250 }
+			//{ text: 'Calories', datafield: 'calories', width: 180 },
+			//{ text: 'Total Fat', datafield: 'totalfat', width: 120 },
+			//{ text: 'Protein', datafield: 'protein', minwidth: 120 }
+		]
+	};
+
+	$scope.resultGridSettings =
+	{
+		width: "100%",
+		height: 300,
+		editable: true,
+		selectionmode: 'checkbox',
+		columnsresize: true,
+		columns: [
+			{
+				text: 'Name', datafield: 'name', width: 250,
+				columntype: 'combobox',
+				createeditor: function (row, value, editor) {
+					editor.jqxComboBox({ source: statesAdapter, displayMember: 'state_ID', valueMember: 'state_ID' });
+				}
 			},
-			source: dataAdapter,
-			editable: false,
-			selectionmode: 'checkbox',
-			columnsresize: true,
-			columns: [
-				{ text: 'Name', datafield: 'name', width: 250 },
-				{ text: 'Beverage Type', datafield: 'type', width: 250 }
-				//{ text: 'Calories', datafield: 'calories', width: 180 },
-				//{ text: 'Total Fat', datafield: 'totalfat', width: 120 },
-				//{ text: 'Protein', datafield: 'protein', minwidth: 120 }
-			]
-		};
+			{ text: 'Beverage Type', datafield: 'type', width: 250 },
+			{ text: 'Calories', datafield: 'calories', width: 180 },
+			{ text: 'Total Fat', datafield: 'totalfat', width: 120 },
+			{ text: 'Protein', datafield: 'protein', minwidth: 120 }
+		]
+	};
 
-		$scope.resultGridSettings =
-		{
-			width: "100%",
-			height: 300,
-			editable: true,
-			selectionmode: 'checkbox',
-			columnsresize: true,
-			columns: [
-				{
-					text: 'Name', datafield: 'name', width: 250,
-					columntype: 'combobox',
-					createeditor: function (row, value, editor) {
-						editor.jqxComboBox({ source: statesAdapter, displayMember: 'state_ID', valueMember: 'state_ID' });
-					}
-				},
-				{ text: 'Beverage Type', datafield: 'type', width: 250 },
-				{ text: 'Calories', datafield: 'calories', width: 180 },
-				{ text: 'Total Fat', datafield: 'totalfat', width: 120 },
-				{ text: 'Protein', datafield: 'protein', minwidth: 120 }
-			]
-		};
 
-		$scope.createWidget = true;
-	}).error(function (data, status) {
-		// Some error occurred
-	});
 
 	$scope.bindingComplete = function (event) {
 		//alert("binding is completed");

@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 {
@@ -20,7 +22,22 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 		[HttpPost]
 		public ActionResult SearchByClient(HomeModel model)
 		{
+			List<BeverageModel> models = new List<BeverageModel>
+				{
+				new BeverageModel {Calories = 100, Name = "Chocobar", TotalFat = "10g", Type = "Chocolate", Protein = "0g"},
+				new BeverageModel {Calories = 200, Name = "Butter", TotalFat = "100g", Type = "Dairy", Protein = "10g"},
+				new BeverageModel {Calories = 300, Name = "Cheese", TotalFat = "1000g", Type = "Dairy", Protein = "100g"},
+				};
+			ViewBag.JsonData = JsonConvert.SerializeObject(models, GetJsonSerializerSettings());
+
 			return View("Index", model);
+		}
+
+		private static JsonSerializerSettings GetJsonSerializerSettings()
+		{
+			var jsonSerializerSettings = new JsonSerializerSettings();
+			jsonSerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+			return jsonSerializerSettings;
 		}
 
 		[HttpPost]
