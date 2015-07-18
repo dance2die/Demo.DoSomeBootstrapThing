@@ -455,6 +455,8 @@
     <Content Include="Scripts\Home\Index.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\JQWidgets\globalization\globalize.culture.cs-CZ.js" />
     <Content Include="Scripts\JQWidgets\globalization\globalize.culture.de-DE.js" />
     <Content Include="Scripts\JQWidgets\globalization\globalize.culture.en-CA.js" />
