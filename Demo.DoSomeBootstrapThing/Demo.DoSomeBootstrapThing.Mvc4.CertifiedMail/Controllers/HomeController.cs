@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
-using System.Xml.Serialization;
 using Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -31,13 +29,6 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 			ViewBag.JsonData = JsonConvert.SerializeObject(models, GetJsonSerializerSettings());
 
 			return View("Index", model);
-		}
-
-		private static JsonSerializerSettings GetJsonSerializerSettings()
-		{
-			var jsonSerializerSettings = new JsonSerializerSettings();
-			jsonSerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-			return jsonSerializerSettings;
 		}
 
 		[HttpPost]
@@ -83,6 +74,13 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 			//var url = "http://www.gmail.com";
 			//return Redirect(url);
 			return RedirectToAction("Index", models);
+		}
+
+		private static JsonSerializerSettings GetJsonSerializerSettings()
+		{
+			var jsonSerializerSettings = new JsonSerializerSettings();
+			jsonSerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+			return jsonSerializerSettings;
 		}
 	}
 }
