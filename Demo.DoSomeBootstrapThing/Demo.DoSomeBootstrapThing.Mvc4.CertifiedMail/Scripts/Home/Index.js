@@ -3,14 +3,127 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 	$scope.createWidget = false;
 
 	$scope.jsonData = jsonData;
-	//$scope.$apply();
 
-	//$scope.$watch("jsonData", function (newVal, oldVal) {
-	//	$scope.$apply(function () {
-	//		$scope.jsonData = jsonData;
-	//	});
-	//});
+	$http({
+		method: 'get',
+		url: '/home/searchbyclient'
+		//url: '/sampledata/beverages.txt'
+	}).success(function (data, status) {
+		// prepare the data
+		debugger;
+		$scope.jsonData = data;
 
+		//$scope.jsonData = [
+		//	{
+		//		name: "abc",
+		//		type: "type",
+		//		calories: "10",
+		//		totalfat: "10g",
+		//		protein: "100g"
+		//	}
+		//];
+		//debugger;
+
+		//$scope.jsonData = $.map($scope.jsonData, function(val, index) {
+		//	return val;
+		//});
+
+		var source =
+			{
+				datatype: "array",
+				datafields: [
+					//{ name: 'process', type: 'bool' },
+					{ name: 'name', type: 'string' },
+					{ name: 'type', type: 'string' },
+					{ name: 'calories', type: 'int' },
+					{ name: 'totalfat', type: 'string' },
+					{ name: 'protein', type: 'string' }
+				],
+				id: 'id',
+				//localdata: data
+				localdata: $scope.jsonData
+			};
+		//var dataAdapter = new $.jqx.dataAdapter(source);
+		$scope.dataAdapter = new $.jqx.dataAdapter(source);
+
+		$scope.grid = {};
+
+		$scope.gridSettings =
+		{
+			width: "100%",
+			height: "100%",
+			ready: function () {
+				//$scope.grid.selectrow(1);
+			},
+			source: $scope.dataAdapter,
+			editable: false,
+			selectionmode: 'checkbox',
+			columnsresize: true,
+			columns: [
+				{ text: 'Name', datafield: 'name', width: 250 },
+				{ text: 'Beverage Type', datafield: 'type', width: 250 }
+				//{ text: 'Calories', datafield: 'calories', width: 180 },
+				//{ text: 'Total Fat', datafield: 'totalfat', width: 120 },
+				//{ text: 'Protein', datafield: 'protein', minwidth: 120 }
+			]
+		};
+
+		$scope.resultGridSettings =
+		{
+			width: "100%",
+			height: 300,
+			editable: true,
+			selectionmode: 'checkbox',
+			columnsresize: true,
+			columns: [
+				{
+					text: 'Name', datafield: 'name', width: 250,
+					columntype: 'combobox',
+					createeditor: function (row, value, editor) {
+						editor.jqxComboBox({ source: statesAdapter, displayMember: 'state_ID', valueMember: 'state_ID' });
+					}
+				},
+				{ text: 'Beverage Type', datafield: 'type', width: 250 },
+				{ text: 'Calories', datafield: 'calories', width: 180 },
+				{ text: 'Total Fat', datafield: 'totalfat', width: 120 },
+				{ text: 'Protein', datafield: 'protein', minwidth: 120 }
+			]
+		};
+
+		$scope.createWidget = true;
+
+	}).error(function (data, status) {
+		// Some error occurred
+	});
+
+
+	$scope.updatePartial = function () {
+		$http({
+			method: 'get',
+			url: '/home/searchbyclient'
+		}).success(function (data, status) {
+			// prepare the data
+			debugger;
+			$scope.jsonData = data;
+			$scope.$apply();
+			//$scope.$apply(function () {
+			//	debugger;
+			//	//$scope.jsonData = data;
+			//	$scope.jsonData = $.map(data, function (value, index) {
+			//		return [value];
+			//	});
+
+			//	$scope.dataAdapter.source.localdata = $scope.jsonData;
+			//	//$scope.dataAdapter.source.localdata = $scope.jsonData;
+
+			//	$scope.dataAdapter.dataBind();
+			$("#jqxGrid0").jqxGrid("refresh");
+			//});
+
+		}).error(function (data, status) {
+			// Some error occurred
+		});
+	}
 
 	var usStates = [
 		{ state_ID: "AE" }, { state_ID: "AL" }, { state_ID: "AK" }, { state_ID: "AZ" }, { state_ID: "AR" },
@@ -37,80 +150,7 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 		};
 	var statesAdapter = new $.jqx.dataAdapter(statesSource, { autoBind: true });
 
-
-	$http({
-		method: 'get',
-		//url: '../sampledata/beverages-simple.txt'
-		url: '../sampledata/beverages.txt'
-	}).success(function (data, status) {
-		// prepare the data
-
-		$scope.createWidget = true;
-	}).error(function (data, status) {
-		// Some error occurred
-	});
-
-
-	var source =
-		{
-			datatype: "json",
-			datafields: [
-				//{ name: 'process', type: 'bool' },
-				{ name: 'name', type: 'string' },
-				{ name: 'type', type: 'string' },
-				{ name: 'calories', type: 'int' },
-				{ name: 'totalfat', type: 'string' },
-				{ name: 'protein', type: 'string' }
-			],
-			id: 'id',
-			//localdata: data
-			localdata: $scope.jsonData
-		};
-	var dataAdapter = new $.jqx.dataAdapter(source);
-
-	$scope.grid = {};
-
-	$scope.gridSettings =
-	{
-		width: "100%",
-		height: "100%",
-		ready: function () {
-			//$scope.grid.selectrow(1);
-		},
-		source: dataAdapter,
-		editable: false,
-		selectionmode: 'checkbox',
-		columnsresize: true,
-		columns: [
-			{ text: 'Name', datafield: 'name', width: 250 },
-			{ text: 'Beverage Type', datafield: 'type', width: 250 }
-			//{ text: 'Calories', datafield: 'calories', width: 180 },
-			//{ text: 'Total Fat', datafield: 'totalfat', width: 120 },
-			//{ text: 'Protein', datafield: 'protein', minwidth: 120 }
-		]
-	};
-
-	$scope.resultGridSettings =
-	{
-		width: "100%",
-		height: 300,
-		editable: true,
-		selectionmode: 'checkbox',
-		columnsresize: true,
-		columns: [
-			{
-				text: 'Name', datafield: 'name', width: 250,
-				columntype: 'combobox',
-				createeditor: function (row, value, editor) {
-					editor.jqxComboBox({ source: statesAdapter, displayMember: 'state_ID', valueMember: 'state_ID' });
-				}
-			},
-			{ text: 'Beverage Type', datafield: 'type', width: 250 },
-			{ text: 'Calories', datafield: 'calories', width: 180 },
-			{ text: 'Total Fat', datafield: 'totalfat', width: 120 },
-			{ text: 'Protein', datafield: 'protein', minwidth: 120 }
-		]
-	};
+	
 
 
 
@@ -140,7 +180,7 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 		$("#jqxGrid1").jqxGrid("resumeupdate");
 	}
 
-	$scope.generateBatchIDClick = function(url) {
+	$scope.generateBatchIDClick = function (url) {
 		var finalGridRows = getSelectedRows("jqxGrid1");
 		var data = JSON.stringify(getSelectedRows("jqxGrid1"));
 		console.log(finalGridRows);
@@ -153,8 +193,8 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 			contentType: "application/json; charset=utf-8",
 			datatype: 'json',
 			data: data,
-			success: function(data) {
-				 alert(data);
+			success: function (data) {
+				alert(data);
 			},
 			failure: function (errMsg) {
 				alert(errMsg);
@@ -175,8 +215,7 @@ function addRowsToGrid(toGridId, rowsToAdd) {
 
 function deleteRowsFromGrid(fromGrid, rowIdsToDelete) {
 	var rows = [];
-	for (var i = 0; i < rowIdsToDelete.length; i++)
-	{
+	for (var i = 0; i < rowIdsToDelete.length; i++) {
 		rows.push(rowIdsToDelete[i]);
 	}
 

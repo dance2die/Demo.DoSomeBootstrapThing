@@ -39,57 +39,58 @@
 }
 
 
-
-<div id="searchByClientPartialView">
-	@*@{
-		var htmlString = ViewBag.JsonData as IHtmlString;
-		Html.RenderPartial("SearchByClient", htmlString);
-	}*@
-	@Html.Action("SearchByClient", "Home")
-</div>
-
-@*<script language="javascript">
-			@{
-				var jsonData = "";
-				if (!string.IsNullOrWhiteSpace(ViewBag.JsonData))
-				{
-					jsonData = ViewBag.JsonData;
-				}
+@*
+	<div id="searchByClientPartialView">
+		@{
+				var htmlString = ViewBag.JsonData as IHtmlString;
+				Html.RenderPartial("SearchByClient", htmlString);
 			}
+			@Html.Action("SearchByClient", "Home")
+		</div>
+*@
 
-			var app = angular.module("app");
-			var htmlRawJsondata = '@Html.Raw(jsonData)';
+<script language="javascript">
+	@{
+		var jsonData = "";
+		if (!string.IsNullOrWhiteSpace(ViewBag.JsonData))
+		{
+			jsonData = ViewBag.JsonData;
+		}
+	}
 
-			// https://blog.mariusschulz.com/2014/03/25/bootstrapping-angularjs-applications-with-server-side-data-from-aspnet-mvc
-			app.value("jsonData", htmlRawJsondata);
-				//.controller("gridCtrl", function ($scope, jsonData) {
-				//	//$scope.$watch(function() { return jsonData; }, function(data) {
-				//	//	console.log(data);
-				//	//});
-				//	//$scope.$apply();
-				//	debugger;
-				//	$scope.$watch("jsonData", function (newVal, oldVal) {
-				//		$scope.$apply(function () {
-				//			$scope.jsonData = htmlRawJsondata;
-				//		});
-				//	});
-				//});
+	var app = angular.module("app");
+	var htmlRawJsondata = '@Html.Raw(jsonData)';
 
-			//$('#gridController').scope().$apply();
+	// https://blog.mariusschulz.com/2014/03/25/bootstrapping-angularjs-applications-with-server-side-data-from-aspnet-mvc
+	app.value("jsonData", htmlRawJsondata);
+		//.controller("gridCtrl", function ($scope, jsonData) {
+		//	//$scope.$watch(function() { return jsonData; }, function(data) {
+		//	//	console.log(data);
+		//	//});
+		//	//$scope.$apply();
+		//	debugger;
+		//	$scope.$watch("jsonData", function (newVal, oldVal) {
+		//		$scope.$apply(function () {
+		//			$scope.jsonData = htmlRawJsondata;
+		//		});
+		//	});
+		//});
 
-			//app.controller("gridCtrl", function($scope, jsonData) {
-			//	//$scope.$watch(function() { return jsonData; }, function(data) {
-			//	//	console.log(data);
-			//	//});
-			//	//$scope.$apply();
-			//	debugger;
-			//	$scope.$watch("jsonData", function(newVal, oldVal) {
-			//		$scope.$apply(function() {
-			//			$scope.jsonData = htmlRawJsondata;
-			//		});
-			//	});
-			//});
-	</script>*@
+	//$('#gridController').scope().$apply();
+
+	//app.controller("gridCtrl", function($scope, jsonData) {
+	//	//$scope.$watch(function() { return jsonData; }, function(data) {
+	//	//	console.log(data);
+	//	//});
+	//	//$scope.$apply();
+	//	debugger;
+	//	$scope.$watch("jsonData", function(newVal, oldVal) {
+	//		$scope.$apply(function() {
+	//			$scope.jsonData = htmlRawJsondata;
+	//		});
+	//	});
+	//});
+</script>
 
 
 
@@ -141,7 +142,7 @@
 										<div class="col-sm-8">@Html.TextBoxFor(m => m.LastName, textBoxAttributes)</div>
 									</div>
 
-									<button type="submit" class="btn btn-default submitButton">Search by Client</button>
+									<button type="button" ng-click="updatePartial()" class="btn btn-default submitButton">Search by Client</button>
 								</fieldset>
 							}
 						</div>

@@ -18,21 +18,24 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 		}
 
 		//[HttpPost]
-		[ChildActionOnly]
-		public ActionResult SearchByClient(HomeModel model)
+		//[ChildActionOnly]
+		[HttpGet]
+		//public ActionResult SearchByClient(HomeModel model)
+		public string SearchByClient()
 		//public ActionResult SearchByClient(IHtmlString htmlString)
 		{
 			List<BeverageModel> models = new List<BeverageModel>
 				{
-				new BeverageModel {Calories = 100, Name = "Chocobar", TotalFat = "10g", Type = "Chocolate", Protein = "0g"},
-				new BeverageModel {Calories = 200, Name = "Butter", TotalFat = "100g", Type = "Dairy", Protein = "10g"},
-				new BeverageModel {Calories = 300, Name = "Cheese", TotalFat = "1000g", Type = "Dairy", Protein = "100g"},
+				new BeverageModel {Id = 1, Calories = 100, Name = "Chocobar", TotalFat = "10g", Type = "Chocolate", Protein = "0g"},
+				new BeverageModel {Id = 2, Calories = 200, Name = "Butter", TotalFat = "100g", Type = "Dairy", Protein = "10g"},
+				new BeverageModel {Id = 3, Calories = 300, Name = "Cheese", TotalFat = "1000g", Type = "Dairy", Protein = "100g"},
 				};
 			var jsonData = JsonConvert.SerializeObject(models, GetJsonSerializerSettings());
 			ViewBag.JsonData = new HtmlString(jsonData);
 
 			//return View("Index", model);
-			return PartialView(new HtmlString(jsonData));
+			//return PartialView(new HtmlString(jsonData));
+			return jsonData;
 		}
 
 		[HttpPost]
@@ -69,7 +72,7 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 						new XElement("calories", model.Calories),
 						new XElement("totalfat", model.TotalFat),
 						new XElement("protein", model.Protein),
-						new XElement("uid", model.Uid)
+						new XElement("id", model.Id)
 						)));
 			}
 

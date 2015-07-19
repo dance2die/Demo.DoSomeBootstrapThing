@@ -7,6 +7,6 @@
 		public int Calories { get; set; }
 		public string TotalFat { get; set; }
 		public string Protein { get; set; }
-		public int Uid { get; set; }
+		public int Id { get; set; }
 	}
 }
