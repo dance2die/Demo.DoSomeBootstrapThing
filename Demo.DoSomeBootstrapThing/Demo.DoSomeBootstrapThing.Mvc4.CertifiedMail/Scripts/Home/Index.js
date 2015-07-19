@@ -2,7 +2,7 @@
 app.controller("gridCtrl", function ($scope, $http, jsonData) {
 	$scope.createWidget = false;
 
-	$scope.jsonData = jsonData;
+	//$scope.jsonData = jsonData;
 
 	$http({
 		method: 'get',
@@ -10,9 +10,9 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 		//url: '/sampledata/beverages.txt'
 	}).success(function (data, status) {
 		// prepare the data
-		$scope.jsonData = data;
+		//$scope.jsonData = data;
 
-		setGridSettings();
+		setGridSettings(data);
 
 		$scope.createWidget = true;
 
@@ -20,7 +20,7 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 		// Some error occurred
 	});
 
-	function setGridSettings() {
+	function setGridSettings(data) {
 		$scope.createWidget = false;
 
 		var source =
@@ -35,8 +35,8 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 				{ name: 'protein', type: 'string' }
 			],
 			id: 'id',
-			//localdata: data
-			localdata: $scope.jsonData
+			localdata: data
+			//localdata: $scope.jsonData
 		};
 		//var dataAdapter = new $.jqx.dataAdapter(source);
 		$scope.dataAdapter = new $.jqx.dataAdapter(source);
@@ -94,22 +94,50 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 			url: '/home/searchbyclient'
 		}).success(function (data, status) {
 			// prepare the data
-			debugger;
-			$scope.jsonData = data;
-			setGridSettings();
-			//$scope.$apply();
-			//$scope.$apply(function () {
-			//	debugger;
-			//	setGridSettings();
-			//});
+			//var resultGrid = getResultGrid();
+			//var datainformation = resultGrid.jqxGrid('getdatainformation');
+			//var rowscount = datainformation.rowscount;
+
+			//debugger;
+			//if (rowscount == 0) {
+			//	setGridSettings(data);
+			//} else {
+			//	resultGrid.jqxGrid('addrow', null, data);
+			//}
+			clearResultRows();
+			addToResultRows(data);
+			//setGridSettings(data);
+			clearGridSelections("jqxGrid0");
+
 
 			//	$scope.dataAdapter.dataBind();
-			$("#jqxGrid0").jqxGrid("refresh");
+			resultGrid.jqxGrid("refresh");
 			//});
 
 		}).error(function (data, status) {
 			// Some error occurred
 		});
+	}
+
+	function addToResultRows(data) {
+		var resultGrid = getResultGrid();
+		resultGrid.jqxGrid('addrow', null, data);
+	}
+
+	function clearResultRows() {
+		var resultGrid = getResultGrid();
+		resultGrid.jqxGrid('selectallrows');
+
+		var selectedRowIds = getSelectedRowIds("jqxGrid0");
+		deleteRowsFromGrid("jqxGrid0", selectedRowIds);
+	}
+
+	function getResultGrid() {
+		return $("#jqxGrid0");
+	}
+
+	function getFinalGrid() {
+		return $("#jqxGrid1");
 	}
 
 	var usStates = [
@@ -146,9 +174,12 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 	}
 
 	$scope.addToFinalResultClick = function () {
+		var resultGrid = getResultGrid();
+		var finalGrid = getFinalGrid();
+
 		// http://www.jqwidgets.com/create-remove-or-update-many-grid-rows/
-		$("#jqxGrid0").jqxGrid("beginupdate");
-		$("#jqxGrid1").jqxGrid("beginupdate");
+		resultGrid.jqxGrid("beginupdate");
+		finalGrid.jqxGrid("beginupdate");
 
 		//var selectedRowIndexes = getSelectedRowIndexes("jqxGrid0");
 		//for (var i = 0; i < selectedRowIndexes.length; i++) {
@@ -163,10 +194,11 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 
 		clearGridSelections("jqxGrid0");
 
-		$scope.jsonData = null;
 
-		$("#jqxGrid0").jqxGrid("resumeupdate");
-		$("#jqxGrid1").jqxGrid("resumeupdate");
+		resultGrid.jqxGrid("resumeupdate");
+		finalGrid.jqxGrid("resumeupdate");
+
+		resultGrid.jqxGrid("refresh");
 	}
 
 	$scope.generateBatchIDClick = function (url) {
@@ -230,6 +262,19 @@ function getSelectedRows(gridId) {
 	return selectedRows;
 }
 
+function getRowIds(gridId) {
+	var grid = $("#" + gridId);
+	var rowIndexes = grid.jqxGrid('selectedrowindexes');
+	var selectedRows = new Array();
+
+	for (var i = 0; i < rowIndexes.length; i++) {
+		//var row = grid.jqxGrid('getrowdata', rowIndexes[i]);
+		var rowId = grid.jqxGrid('getrowid', rowIndexes[i]);
+		selectedRows[selectedRows.length] = rowId;
+	}
+
+	return selectedRows;
+}
 
 function getSelectedRowIds(gridId) {
 	var grid = $("#" + gridId);
