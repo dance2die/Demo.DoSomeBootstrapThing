@@ -108,16 +108,15 @@
 				<div class="panel panel-default">
 					<div class="panel-body searchPanelBody">
 						<div class="row">
-							@*@using (Html.BeginForm("Index", "Home", FormMethod.Post,
-								new { id = "searchByClientForm", @class = "form-horizontal" }))*@
-
-							@using (Ajax.BeginForm("Index", "Home", FormMethod.Post,
-	new AjaxOptions
-	{
-		HttpMethod = "POST",
-		InsertionMode = InsertionMode.Replace
-	},
-	new { id = "searchByClientForm", @class = "form-horizontal" }))
+							@*@using (Ajax.BeginForm("Index", "Home", FormMethod.Post,
+		new AjaxOptions
+		{
+			HttpMethod = "POST",
+			InsertionMode = InsertionMode.Replace
+		},
+		new { id = "searchByClientForm", @class = "form-horizontal" }))*@
+							@using (Html.BeginForm("Index", "Home", FormMethod.Post,
+								new { id = "searchByClientForm", @class = "form-horizontal" }))
 							{
 								<fieldset>
 									<legend>Search by Client</legend>

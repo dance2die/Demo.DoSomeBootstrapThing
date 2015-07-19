@@ -19,8 +19,8 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 
 		//[HttpPost]
 		[ChildActionOnly]
-		//public ActionResult SearchByClient(HomeModel model)
-		public ActionResult SearchByClient(IHtmlString htmlString)
+		public ActionResult SearchByClient(HomeModel model)
+		//public ActionResult SearchByClient(IHtmlString htmlString)
 		{
 			List<BeverageModel> models = new List<BeverageModel>
 				{
