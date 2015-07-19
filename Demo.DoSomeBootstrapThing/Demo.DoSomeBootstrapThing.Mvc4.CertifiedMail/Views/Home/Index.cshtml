@@ -36,8 +36,9 @@
 	<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 	<script src="~/Scripts/Home/Index.js"></script>
+}
 
-	<script language="javascript">
+<script language="javascript">
 		@{
 			var jsonData = "";
 			if (!string.IsNullOrWhiteSpace(ViewBag.JsonData))
@@ -47,14 +48,45 @@
 		}
 
 		var app = angular.module("app");
-		app.value("jsonData", '@Html.Raw(jsonData)');
-		//app.controller("gridCtrl", function($scope, jsonData) {
-		//	$scope.$watch("jsonData", function)
-		//});
-	</script>
-}
+		var htmlRawJsondata = '@Html.Raw(jsonData)';
 
-<div ng-controller="gridCtrl" class="panel panel-default">
+		// https://blog.mariusschulz.com/2014/03/25/bootstrapping-angularjs-applications-with-server-side-data-from-aspnet-mvc
+		app.value("jsonData", htmlRawJsondata);
+			//.controller("gridCtrl", function ($scope, jsonData) {
+			//	//$scope.$watch(function() { return jsonData; }, function(data) {
+			//	//	console.log(data);
+			//	//});
+			//	//$scope.$apply();
+			//	debugger;
+			//	$scope.$watch("jsonData", function (newVal, oldVal) {
+			//		$scope.$apply(function () {
+			//			$scope.jsonData = htmlRawJsondata;
+			//		});
+			//	});
+			//});
+
+		//$('#gridController').scope().$apply();
+
+		//app.controller("gridCtrl", function($scope, jsonData) {
+		//	//$scope.$watch(function() { return jsonData; }, function(data) {
+		//	//	console.log(data);
+		//	//});
+		//	//$scope.$apply();
+		//	debugger;
+		//	$scope.$watch("jsonData", function(newVal, oldVal) {
+		//		$scope.$apply(function() {
+		//			$scope.jsonData = htmlRawJsondata;
+		//		});
+		//	});
+		//});
+</script>
+
+
+
+
+<div id="gridController" ng-controller="gridCtrl" class="panel panel-default">
+
+
 	<div class="panel-heading">
 		<h3 class="panel-title">Certified Mail</h3>
 	</div>
@@ -66,11 +98,11 @@
 				<div class="panel panel-default">
 					<div class="panel-body searchPanelBody">
 						<div class="row">
-							@*@using (Ajax.BeginForm("SearchByClient", "Home", FormMethod.Post,
+@*@using (Ajax.BeginForm("SearchByClient", "Home", FormMethod.Post,
 								new AjaxOptions { HttpMethod = "POST" },
 								new { id = "searchByClientForm", @class = "form-horizontal" }))*@
-								@using (Html.BeginForm("SearchByClient", "Home", FormMethod.Post,
-									new { id = "searchByClientForm", @class = "form-horizontal" }))
+							@using (Html.BeginForm("SearchByClient", "Home", FormMethod.Post,
+								new { id = "searchByClientForm", @class = "form-horizontal" }))
 							{
 								<fieldset>
 									<legend>Search by Client</legend>
