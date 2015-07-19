@@ -10,39 +10,34 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 		//url: '/sampledata/beverages.txt'
 	}).success(function (data, status) {
 		// prepare the data
-		debugger;
 		$scope.jsonData = data;
 
-		//$scope.jsonData = [
-		//	{
-		//		name: "abc",
-		//		type: "type",
-		//		calories: "10",
-		//		totalfat: "10g",
-		//		protein: "100g"
-		//	}
-		//];
-		//debugger;
+		setGridSettings();
 
-		//$scope.jsonData = $.map($scope.jsonData, function(val, index) {
-		//	return val;
-		//});
+		$scope.createWidget = true;
+
+	}).error(function (data, status) {
+		// Some error occurred
+	});
+
+	function setGridSettings() {
+		$scope.createWidget = false;
 
 		var source =
-			{
-				datatype: "array",
-				datafields: [
-					//{ name: 'process', type: 'bool' },
-					{ name: 'name', type: 'string' },
-					{ name: 'type', type: 'string' },
-					{ name: 'calories', type: 'int' },
-					{ name: 'totalfat', type: 'string' },
-					{ name: 'protein', type: 'string' }
-				],
-				id: 'id',
-				//localdata: data
-				localdata: $scope.jsonData
-			};
+		{
+			datatype: "array",
+			datafields: [
+				//{ name: 'process', type: 'bool' },
+				{ name: 'name', type: 'string' },
+				{ name: 'type', type: 'string' },
+				{ name: 'calories', type: 'int' },
+				{ name: 'totalfat', type: 'string' },
+				{ name: 'protein', type: 'string' }
+			],
+			id: 'id',
+			//localdata: data
+			localdata: $scope.jsonData
+		};
 		//var dataAdapter = new $.jqx.dataAdapter(source);
 		$scope.dataAdapter = new $.jqx.dataAdapter(source);
 
@@ -91,11 +86,7 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 		};
 
 		$scope.createWidget = true;
-
-	}).error(function (data, status) {
-		// Some error occurred
-	});
-
+	}
 
 	$scope.updatePartial = function () {
 		$http({
@@ -105,16 +96,12 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 			// prepare the data
 			debugger;
 			$scope.jsonData = data;
-			$scope.$apply();
+			setGridSettings();
+			//$scope.$apply();
 			//$scope.$apply(function () {
 			//	debugger;
-			//	//$scope.jsonData = data;
-			//	$scope.jsonData = $.map(data, function (value, index) {
-			//		return [value];
-			//	});
-
-			//	$scope.dataAdapter.source.localdata = $scope.jsonData;
-			//	//$scope.dataAdapter.source.localdata = $scope.jsonData;
+			//	setGridSettings();
+			//});
 
 			//	$scope.dataAdapter.dataBind();
 			$("#jqxGrid0").jqxGrid("refresh");
@@ -150,7 +137,7 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 		};
 	var statesAdapter = new $.jqx.dataAdapter(statesSource, { autoBind: true });
 
-	
+
 
 
 
@@ -175,6 +162,8 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 		deleteRowsFromGrid("jqxGrid0", selectedRowIds);
 
 		clearGridSelections("jqxGrid0");
+
+		$scope.jsonData = null;
 
 		$("#jqxGrid0").jqxGrid("resumeupdate");
 		$("#jqxGrid1").jqxGrid("resumeupdate");
