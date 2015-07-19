@@ -1,0 +1,19 @@
+﻿@model IHtmlString
+
+<script type="text/javascript" language="javascript">
+	var rawJsonData = @Html.Raw(Model);
+
+	var app = angular.module("app");
+	app.value("jsonData", rawJsonData);
+
+	//app.value("jsonData", rawJsonData)
+	//	.controller("gridCtrl", function ($scope, jsonData) {
+	//		debugger;
+	//		$scope.$watch("jsonData", function (newVal, oldVal) {
+	//			$scope.$apply(function () {
+	//				$scope.jsonData = jsonData;
+	//			});
+	//		});
+	//	});
+
+</script>

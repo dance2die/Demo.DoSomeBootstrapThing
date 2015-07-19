@@ -3,7 +3,14 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 	$scope.createWidget = false;
 
 	$scope.jsonData = jsonData;
-	$scope.$apply();
+	//$scope.$apply();
+
+	//$scope.$watch("jsonData", function (newVal, oldVal) {
+	//	$scope.$apply(function () {
+	//		$scope.jsonData = jsonData;
+	//	});
+	//});
+
 
 	var usStates = [
 		{ state_ID: "AE" }, { state_ID: "AL" }, { state_ID: "AK" }, { state_ID: "AZ" }, { state_ID: "AR" },

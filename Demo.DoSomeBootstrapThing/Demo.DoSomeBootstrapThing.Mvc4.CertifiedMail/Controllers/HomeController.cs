@@ -17,8 +17,10 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 			return View(new HomeModel());
 		}
 
-		[HttpPost]
-		public ActionResult SearchByClient(HomeModel model)
+		//[HttpPost]
+		[ChildActionOnly]
+		//public ActionResult SearchByClient(HomeModel model)
+		public ActionResult SearchByClient(IHtmlString htmlString)
 		{
 			List<BeverageModel> models = new List<BeverageModel>
 				{
@@ -26,9 +28,11 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 				new BeverageModel {Calories = 200, Name = "Butter", TotalFat = "100g", Type = "Dairy", Protein = "10g"},
 				new BeverageModel {Calories = 300, Name = "Cheese", TotalFat = "1000g", Type = "Dairy", Protein = "100g"},
 				};
-			ViewBag.JsonData = JsonConvert.SerializeObject(models, GetJsonSerializerSettings());
+			var jsonData = JsonConvert.SerializeObject(models, GetJsonSerializerSettings());
+			ViewBag.JsonData = new HtmlString(jsonData);
 
-			return View("Index", model);
+			//return View("Index", model);
+			return PartialView(new HtmlString(jsonData));
 		}
 
 		[HttpPost]

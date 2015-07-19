@@ -38,48 +38,58 @@
 	<script src="~/Scripts/Home/Index.js"></script>
 }
 
-<script language="javascript">
-		@{
-			var jsonData = "";
-			if (!string.IsNullOrWhiteSpace(ViewBag.JsonData))
-			{
-				jsonData = ViewBag.JsonData;
+
+
+<div id="searchByClientPartialView">
+	@*@{
+		var htmlString = ViewBag.JsonData as IHtmlString;
+		Html.RenderPartial("SearchByClient", htmlString);
+	}*@
+	@Html.Action("SearchByClient", "Home")
+</div>
+
+@*<script language="javascript">
+			@{
+				var jsonData = "";
+				if (!string.IsNullOrWhiteSpace(ViewBag.JsonData))
+				{
+					jsonData = ViewBag.JsonData;
+				}
 			}
-		}
 
-		var app = angular.module("app");
-		var htmlRawJsondata = '@Html.Raw(jsonData)';
+			var app = angular.module("app");
+			var htmlRawJsondata = '@Html.Raw(jsonData)';
 
-		// https://blog.mariusschulz.com/2014/03/25/bootstrapping-angularjs-applications-with-server-side-data-from-aspnet-mvc
-		app.value("jsonData", htmlRawJsondata);
-			//.controller("gridCtrl", function ($scope, jsonData) {
+			// https://blog.mariusschulz.com/2014/03/25/bootstrapping-angularjs-applications-with-server-side-data-from-aspnet-mvc
+			app.value("jsonData", htmlRawJsondata);
+				//.controller("gridCtrl", function ($scope, jsonData) {
+				//	//$scope.$watch(function() { return jsonData; }, function(data) {
+				//	//	console.log(data);
+				//	//});
+				//	//$scope.$apply();
+				//	debugger;
+				//	$scope.$watch("jsonData", function (newVal, oldVal) {
+				//		$scope.$apply(function () {
+				//			$scope.jsonData = htmlRawJsondata;
+				//		});
+				//	});
+				//});
+
+			//$('#gridController').scope().$apply();
+
+			//app.controller("gridCtrl", function($scope, jsonData) {
 			//	//$scope.$watch(function() { return jsonData; }, function(data) {
 			//	//	console.log(data);
 			//	//});
 			//	//$scope.$apply();
 			//	debugger;
-			//	$scope.$watch("jsonData", function (newVal, oldVal) {
-			//		$scope.$apply(function () {
+			//	$scope.$watch("jsonData", function(newVal, oldVal) {
+			//		$scope.$apply(function() {
 			//			$scope.jsonData = htmlRawJsondata;
 			//		});
 			//	});
 			//});
-
-		//$('#gridController').scope().$apply();
-
-		//app.controller("gridCtrl", function($scope, jsonData) {
-		//	//$scope.$watch(function() { return jsonData; }, function(data) {
-		//	//	console.log(data);
-		//	//});
-		//	//$scope.$apply();
-		//	debugger;
-		//	$scope.$watch("jsonData", function(newVal, oldVal) {
-		//		$scope.$apply(function() {
-		//			$scope.jsonData = htmlRawJsondata;
-		//		});
-		//	});
-		//});
-</script>
+	</script>*@
 
 
 
@@ -98,11 +108,16 @@
 				<div class="panel panel-default">
 					<div class="panel-body searchPanelBody">
 						<div class="row">
-@*@using (Ajax.BeginForm("SearchByClient", "Home", FormMethod.Post,
-								new AjaxOptions { HttpMethod = "POST" },
+							@*@using (Html.BeginForm("Index", "Home", FormMethod.Post,
 								new { id = "searchByClientForm", @class = "form-horizontal" }))*@
-							@using (Html.BeginForm("SearchByClient", "Home", FormMethod.Post,
-								new { id = "searchByClientForm", @class = "form-horizontal" }))
+
+							@using (Ajax.BeginForm("Index", "Home", FormMethod.Post,
+	new AjaxOptions
+	{
+		HttpMethod = "POST",
+		InsertionMode = InsertionMode.Replace
+	},
+	new { id = "searchByClientForm", @class = "form-horizontal" }))
 							{
 								<fieldset>
 									<legend>Search by Client</legend>
@@ -199,10 +214,6 @@
 		</div>
 	</div>
 </div>
-
-
-
-
 
 
 
