@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Xml.Linq;
 using Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Models;
@@ -19,9 +20,9 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 
 		//[HttpPost]
 		//[ChildActionOnly]
-		[HttpGet]
-		//public ActionResult SearchByClient(HomeModel model)
-		public string SearchByClient()
+		[System.Web.Mvc.HttpPost]
+		public string SearchByClient([FromBody]HomeModel model)
+		//public string SearchByClient()
 		//public ActionResult SearchByClient(IHtmlString htmlString)
 		{
 			List<BeverageModel> models = new List<BeverageModel>
@@ -38,7 +39,7 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 			return jsonData;
 		}
 
-		[HttpPost]
+		[System.Web.Mvc.HttpPost]
 		public ActionResult Upload(HttpPostedFileBase file)
 		{
 			if (file != null && file.ContentLength > 0)
@@ -52,7 +53,7 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 			return RedirectToAction("Index");
 		}
 
-		[HttpPost]
+		[System.Web.Mvc.HttpPost]
 		public ActionResult GenerateBatchId(List<BeverageModel> models)
 		{
 

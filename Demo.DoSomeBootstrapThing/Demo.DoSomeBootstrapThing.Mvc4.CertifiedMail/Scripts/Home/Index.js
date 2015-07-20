@@ -3,7 +3,12 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 	$scope.createWidget = false;
 
 	$http({
-		method: 'get',
+		method: 'POST',
+		data: {
+			fileNumber: "111",
+			firstName: "Sung",
+			lastName: "Kim"
+		},
 		url: '/home/searchbyclient'
 		//url: '/sampledata/beverages.txt'
 	}).success(function (data, status) {
