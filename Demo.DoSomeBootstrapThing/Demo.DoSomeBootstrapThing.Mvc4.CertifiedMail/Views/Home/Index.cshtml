@@ -49,7 +49,7 @@
 		</div>
 *@
 
-<script language="javascript">
+@*<script language="javascript">
 	@{
 		var jsonData = "";
 		if (!string.IsNullOrWhiteSpace(ViewBag.JsonData))
@@ -63,34 +63,7 @@
 
 	// https://blog.mariusschulz.com/2014/03/25/bootstrapping-angularjs-applications-with-server-side-data-from-aspnet-mvc
 	app.value("jsonData", htmlRawJsondata);
-		//.controller("gridCtrl", function ($scope, jsonData) {
-		//	//$scope.$watch(function() { return jsonData; }, function(data) {
-		//	//	console.log(data);
-		//	//});
-		//	//$scope.$apply();
-		//	debugger;
-		//	$scope.$watch("jsonData", function (newVal, oldVal) {
-		//		$scope.$apply(function () {
-		//			$scope.jsonData = htmlRawJsondata;
-		//		});
-		//	});
-		//});
-
-	//$('#gridController').scope().$apply();
-
-	//app.controller("gridCtrl", function($scope, jsonData) {
-	//	//$scope.$watch(function() { return jsonData; }, function(data) {
-	//	//	console.log(data);
-	//	//});
-	//	//$scope.$apply();
-	//	debugger;
-	//	$scope.$watch("jsonData", function(newVal, oldVal) {
-	//		$scope.$apply(function() {
-	//			$scope.jsonData = htmlRawJsondata;
-	//		});
-	//	});
-	//});
-</script>
+</script>*@
 
 
 
