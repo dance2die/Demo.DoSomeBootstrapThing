@@ -2,20 +2,14 @@
 app.controller("gridCtrl", function ($scope, $http, jsonData) {
 	$scope.createWidget = false;
 
-	//$scope.jsonData = jsonData;
-
 	$http({
 		method: 'get',
 		url: '/home/searchbyclient'
 		//url: '/sampledata/beverages.txt'
 	}).success(function (data, status) {
-		// prepare the data
-		//$scope.jsonData = data;
-
 		setGridSettings(data);
 
 		$scope.createWidget = true;
-
 	}).error(function (data, status) {
 		// Some error occurred
 	});
@@ -36,7 +30,6 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 			],
 			id: 'id',
 			localdata: data
-			//localdata: $scope.jsonData
 		};
 		//var dataAdapter = new $.jqx.dataAdapter(source);
 		$scope.dataAdapter = new $.jqx.dataAdapter(source);
