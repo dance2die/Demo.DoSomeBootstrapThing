@@ -1,7 +1,8 @@
 ﻿var app = angular.module("app", ["ngRoute", "jqwidgets"]);
-//app.controller("gridCtrl", function ($scope, $http, jsonData) {
-app.controller("gridCtrl", function ($scope, $http) {
+app.controller("gridCtrl", function ($scope, $http, pageContext) {
 	$scope.createWidget = false;
+
+	console.log(pageContext);
 
 	$http({
 		method: 'POST',
@@ -109,6 +110,7 @@ app.controller("gridCtrl", function ($scope, $http) {
 			clearGridSelections("jqxGrid0");
 
 
+			var resultGrid = getResultGrid();
 			//	$scope.dataAdapter.dataBind();
 			resultGrid.jqxGrid("refresh");
 			//});

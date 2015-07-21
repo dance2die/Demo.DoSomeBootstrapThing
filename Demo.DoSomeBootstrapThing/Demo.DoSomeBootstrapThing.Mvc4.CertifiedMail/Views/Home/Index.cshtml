@@ -49,21 +49,13 @@
 		</div>
 *@
 
-@*<script language="javascript">
-	@{
-		var jsonData = "";
-		if (!string.IsNullOrWhiteSpace(ViewBag.JsonData))
-		{
-			jsonData = ViewBag.JsonData;
-		}
-	}
+<script language="javascript">
+	var pageContext = new Object(@Html.Raw(ViewBag.PageContext));
 
+	// http://stackoverflow.com/a/24518613/4035
 	var app = angular.module("app");
-	var htmlRawJsondata = '@Html.Raw(jsonData)';
-
-	// https://blog.mariusschulz.com/2014/03/25/bootstrapping-angularjs-applications-with-server-side-data-from-aspnet-mvc
-	app.value("jsonData", htmlRawJsondata);
-</script>*@
+	app.value('pageContext', pageContext);
+</script>
 
 
 

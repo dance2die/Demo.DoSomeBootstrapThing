@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -15,7 +16,19 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 	{
 		public ActionResult Index()
 		{
+			ViewBag.PageContext = JsonConvert.SerializeObject(GetPageContext(), GetJsonSerializerSettings());
+
 			return View(new HomeModel());
+		}
+
+		private dynamic GetPageContext()
+		{
+			return new
+			{
+				db = "prod",
+				userName = "skim",
+				machineName = Environment.MachineName
+			};
 		}
 
 		//[HttpPost]
