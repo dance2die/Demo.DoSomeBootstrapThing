@@ -72,6 +72,25 @@ app.controller("gridCtrl", function ($scope, $http, pageContext) {
 			columnsresize: true,
 			columns: [
 				{
+					text: 'Delete',
+					width: 70,
+					datafield: 'Delete',
+					columntype: 'button',
+					cellsrenderer: function() {
+						return "Delete";
+					},
+					buttonclick: function(row) {
+						// open the popup window when the user clicks a button.
+						var rowId = getFinalGrid().jqxGrid('getrowid', row);
+						deleteRowsFromGrid("jqxGrid1", rowId);
+						//var offset = $("#jqxgrid").offset();
+						//	$("#popupWindow").jqxWindow({ position: { x: parseInt(offset.left) + 60, y: parseInt(offset.top) + 60 } });
+						//	// show the popup window.
+						//	$("#popupWindow").jqxWindow('show');
+						//}
+					}
+				},
+				{
 					text: 'Name', datafield: 'name', width: 250,
 					columntype: 'combobox',
 					createeditor: function (row, value, editor) {
@@ -237,8 +256,15 @@ function addRowsToGrid(toGridId, rowsToAdd) {
 
 function deleteRowsFromGrid(fromGrid, rowIdsToDelete) {
 	var rows = [];
-	for (var i = 0; i < rowIdsToDelete.length; i++) {
-		rows.push(rowIdsToDelete[i]);
+
+	// If array is passed, then add each item to the rows collection
+	// else "rowIdsToDelete" contains just one element, so add it to the rows collection
+	if (rowIdsToDelete.length) {
+		for (var i = 0; i < rowIdsToDelete.length; i++) {
+			rows.push(rowIdsToDelete[i]);
+		}
+	} else {
+		rows.push(rowIdsToDelete);
 	}
 
 	$("#" + fromGrid).jqxGrid("deleterow", rows);
