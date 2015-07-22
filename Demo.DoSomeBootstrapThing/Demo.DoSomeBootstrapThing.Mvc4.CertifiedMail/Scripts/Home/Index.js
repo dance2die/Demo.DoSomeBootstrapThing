@@ -71,6 +71,7 @@ app.controller("gridCtrl", function ($scope, $http, pageContext) {
 			selectionmode: 'checkbox',
 			columnsresize: true,
 			columns: [
+				// http://www.jqwidgets.com/community/topic/how-can-i-add-a-delete-column-to-a-jqxgrid/
 				{
 					text: 'Delete',
 					width: 70,
