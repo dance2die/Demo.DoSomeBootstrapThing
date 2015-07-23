@@ -6,30 +6,33 @@ using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Xml.Linq;
+using Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Filters;
 using Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 {
+	[CertifiedMailHandleError]
+	[PageContextFilter]
 	public class HomeController : Controller
 	{
 		public ActionResult Index()
 		{
-			ViewBag.PageContext = JsonConvert.SerializeObject(GetPageContext(), GetJsonSerializerSettings());
+			//ViewBag.PageContext = JsonConvert.SerializeObject(GetPageContext(), GetJsonSerializerSettings());
 
 			return View(new HomeModel());
 		}
 
-		private dynamic GetPageContext()
-		{
-			return new
-			{
-				db = "prod",
-				userName = "skim",
-				machineName = Environment.MachineName
-			};
-		}
+		//private dynamic GetPageContext()
+		//{
+		//	return new
+		//	{
+		//		db = "prod",
+		//		userName = "skim",
+		//		machineName = Environment.MachineName
+		//	};
+		//}
 
 		//[HttpPost]
 		//[ChildActionOnly]
