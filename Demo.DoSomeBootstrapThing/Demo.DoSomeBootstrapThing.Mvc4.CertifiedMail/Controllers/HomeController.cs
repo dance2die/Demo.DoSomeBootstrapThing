@@ -92,9 +92,11 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 
 			// Generate Batch ID.
 			// Pass Batch ID to the URL.
-			//var url = "http://www.gmail.com";
-			//return Redirect(url);
-			return RedirectToAction("Index", models);
+			var url = "http://www.gmail.com";
+			UriBuilder builder = new UriBuilder(url);
+			builder.Query = "WLBatchID=100";
+			return Redirect(url);
+			//return RedirectToAction("Index", models);
 		}
 
 		private static JsonSerializerSettings GetJsonSerializerSettings()
