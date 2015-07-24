@@ -108,33 +108,18 @@ app.controller("gridCtrl", function ($scope, $http, pageContext) {
 		$scope.createWidget = true;
 	}
 
-	$scope.updatePartial = function () {
+	$scope.searchByClient = function () {
 		$http({
 			method: 'get',
 			url: '/home/searchbyclient'
 		}).success(function (data, status) {
-			// prepare the data
-			//var resultGrid = getResultGrid();
-			//var datainformation = resultGrid.jqxGrid('getdatainformation');
-			//var rowscount = datainformation.rowscount;
-
-			//debugger;
-			//if (rowscount == 0) {
-			//	setGridSettings(data);
-			//} else {
-			//	resultGrid.jqxGrid('addrow', null, data);
-			//}
 			clearResultRows();
 			addToResultRows(data);
-			//setGridSettings(data);
 			clearGridSelections("jqxGrid0");
 
 
 			var resultGrid = getResultGrid();
-			//	$scope.dataAdapter.dataBind();
 			resultGrid.jqxGrid("refresh");
-			//});
-
 		}).error(function (data, status) {
 			// Some error occurred
 		});
