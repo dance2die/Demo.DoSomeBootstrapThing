@@ -1,27 +1,44 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Xml.Linq;
+using Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Filters;
 using Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
 namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 {
+	[CertifiedMailHandleError]
+	[PageContextFilter]
 	public class HomeController : Controller
 	{
 		public ActionResult Index()
 		{
+			//ViewBag.PageContext = JsonConvert.SerializeObject(GetPageContext(), GetJsonSerializerSettings());
+
 			return View(new HomeModel());
 		}
 
+		//private dynamic GetPageContext()
+		//{
+		//	return new
+		//	{
+		//		db = "prod",
+		//		userName = "skim",
+		//		machineName = Environment.MachineName
+		//	};
+		//}
+
 		//[HttpPost]
 		//[ChildActionOnly]
-		[HttpGet]
-		//public ActionResult SearchByClient(HomeModel model)
-		public string SearchByClient()
+		[System.Web.Mvc.HttpPost]
+		public string SearchByClient([FromBody]HomeModel model)
+		//public string SearchByClient()
 		//public ActionResult SearchByClient(IHtmlString htmlString)
 		{
 			List<BeverageModel> models = new List<BeverageModel>
@@ -38,7 +55,7 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 			return jsonData;
 		}
 
-		[HttpPost]
+		[System.Web.Mvc.HttpPost]
 		public ActionResult Upload(HttpPostedFileBase file)
 		{
 			if (file != null && file.ContentLength > 0)
@@ -52,7 +69,7 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 			return RedirectToAction("Index");
 		}
 
-		[HttpPost]
+		[System.Web.Mvc.HttpPost]
 		public ActionResult GenerateBatchId(List<BeverageModel> models)
 		{
 
@@ -78,9 +95,11 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 
 			// Generate Batch ID.
 			// Pass Batch ID to the URL.
-			//var url = "http://www.gmail.com";
-			//return Redirect(url);
-			return RedirectToAction("Index", models);
+			var url = "http://www.gmail.com";
+			UriBuilder builder = new UriBuilder(url);
+			builder.Query = "WLBatchID=100";
+			return Redirect(url);
+			//return RedirectToAction("Index", models);
 		}
 
 		private static JsonSerializerSettings GetJsonSerializerSettings()

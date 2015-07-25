@@ -1,21 +1,22 @@
 ﻿var app = angular.module("app", ["ngRoute", "jqwidgets"]);
-app.controller("gridCtrl", function ($scope, $http, jsonData) {
+app.controller("gridCtrl", function ($scope, $http, pageContext) {
 	$scope.createWidget = false;
 
-	//$scope.jsonData = jsonData;
+	console.log(pageContext);
 
 	$http({
-		method: 'get',
+		method: 'POST',
+		data: {
+			fileNumber: "111",
+			firstName: "Sung",
+			lastName: "Kim"
+		},
 		url: '/home/searchbyclient'
 		//url: '/sampledata/beverages.txt'
 	}).success(function (data, status) {
-		// prepare the data
-		//$scope.jsonData = data;
-
 		setGridSettings(data);
 
 		$scope.createWidget = true;
-
 	}).error(function (data, status) {
 		// Some error occurred
 	});
@@ -36,7 +37,6 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 			],
 			id: 'id',
 			localdata: data
-			//localdata: $scope.jsonData
 		};
 		//var dataAdapter = new $.jqx.dataAdapter(source);
 		$scope.dataAdapter = new $.jqx.dataAdapter(source);
@@ -71,6 +71,26 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 			selectionmode: 'checkbox',
 			columnsresize: true,
 			columns: [
+				// http://www.jqwidgets.com/community/topic/how-can-i-add-a-delete-column-to-a-jqxgrid/
+				{
+					text: 'Delete',
+					width: 70,
+					datafield: 'Delete',
+					columntype: 'button',
+					cellsrenderer: function() {
+						return "Delete";
+					},
+					buttonclick: function(row) {
+						// open the popup window when the user clicks a button.
+						var rowId = getFinalGrid().jqxGrid('getrowid', row);
+						deleteRowsFromGrid("jqxGrid1", rowId);
+						//var offset = $("#jqxgrid").offset();
+						//	$("#popupWindow").jqxWindow({ position: { x: parseInt(offset.left) + 60, y: parseInt(offset.top) + 60 } });
+						//	// show the popup window.
+						//	$("#popupWindow").jqxWindow('show');
+						//}
+					}
+				},
 				{
 					text: 'Name', datafield: 'name', width: 250,
 					columntype: 'combobox',
@@ -88,32 +108,18 @@ app.controller("gridCtrl", function ($scope, $http, jsonData) {
 		$scope.createWidget = true;
 	}
 
-	$scope.updatePartial = function () {
+	$scope.searchByClient = function () {
 		$http({
 			method: 'get',
 			url: '/home/searchbyclient'
 		}).success(function (data, status) {
-			// prepare the data
-			//var resultGrid = getResultGrid();
-			//var datainformation = resultGrid.jqxGrid('getdatainformation');
-			//var rowscount = datainformation.rowscount;
-
-			//debugger;
-			//if (rowscount == 0) {
-			//	setGridSettings(data);
-			//} else {
-			//	resultGrid.jqxGrid('addrow', null, data);
-			//}
 			clearResultRows();
 			addToResultRows(data);
-			//setGridSettings(data);
 			clearGridSelections("jqxGrid0");
 
 
-			//	$scope.dataAdapter.dataBind();
+			var resultGrid = getResultGrid();
 			resultGrid.jqxGrid("refresh");
-			//});
-
 		}).error(function (data, status) {
 			// Some error occurred
 		});
@@ -236,8 +242,15 @@ function addRowsToGrid(toGridId, rowsToAdd) {
 
 function deleteRowsFromGrid(fromGrid, rowIdsToDelete) {
 	var rows = [];
-	for (var i = 0; i < rowIdsToDelete.length; i++) {
-		rows.push(rowIdsToDelete[i]);
+
+	// If array is passed, then add each item to the rows collection
+	// else "rowIdsToDelete" contains just one element, so add it to the rows collection
+	if (rowIdsToDelete.length) {
+		for (var i = 0; i < rowIdsToDelete.length; i++) {
+			rows.push(rowIdsToDelete[i]);
+		}
+	} else {
+		rows.push(rowIdsToDelete);
 	}
 
 	$("#" + fromGrid).jqxGrid("deleterow", rows);
