@@ -33,8 +33,6 @@
 	<script src="~/Scripts/jqwidgets/jqxdata.js"></script>
 	<script src="~/Scripts/JQWidgets/jqxangular.js"></script>
 
-	<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-
 	<script src="~/Scripts/Home/Index.js"></script>
 }
 
@@ -51,10 +49,10 @@
 
 <script language="javascript">
 	var pageContext = new Object(@Html.Raw(ViewBag.PageContext));
-
 	// http://stackoverflow.com/a/24518613/4035
 	var app = angular.module("app");
-	app.value('pageContext', pageContext);
+	// https://blog.mariusschulz.com/2014/03/25/bootstrapping-angularjs-applications-with-server-side-data-from-aspnet-mvc
+	app.value("pageContext", pageContext);
 </script>
 
 
@@ -74,13 +72,6 @@
 				<div class="panel panel-default">
 					<div class="panel-body searchPanelBody">
 						<div class="row">
-							@*@using (Ajax.BeginForm("Index", "Home", FormMethod.Post,
-		new AjaxOptions
-		{
-			HttpMethod = "POST",
-			InsertionMode = InsertionMode.Replace
-		},
-		new { id = "searchByClientForm", @class = "form-horizontal" }))*@
 							@using (Html.BeginForm("Index", "Home", FormMethod.Post,
 								new { id = "searchByClientForm", @class = "form-horizontal" }))
 							{
@@ -148,7 +139,9 @@
 							</jqx-grid>
 
 							@*<input id="addToFinalResultButton" type="button" value="Add to Result" />*@
-							<button id="addToFinalResultButton" jqx-button ng-click="addToFinalResultClick()">Add to Result</button>
+							<button id="addToFinalResultButton" jqx-button ng-click="addToFinalResultClick()">
+								Add to Result
+							</button>
 						</fieldset>
 					</div>
 				</div>
