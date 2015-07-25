@@ -33,8 +33,6 @@
 	<script src="~/Scripts/jqwidgets/jqxdata.js"></script>
 	<script src="~/Scripts/JQWidgets/jqxangular.js"></script>
 
-	<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
-
 	<script src="~/Scripts/Home/Index.js"></script>
 }
 
@@ -63,33 +61,6 @@
 
 	// https://blog.mariusschulz.com/2014/03/25/bootstrapping-angularjs-applications-with-server-side-data-from-aspnet-mvc
 	app.value("jsonData", htmlRawJsondata);
-		//.controller("gridCtrl", function ($scope, jsonData) {
-		//	//$scope.$watch(function() { return jsonData; }, function(data) {
-		//	//	console.log(data);
-		//	//});
-		//	//$scope.$apply();
-		//	debugger;
-		//	$scope.$watch("jsonData", function (newVal, oldVal) {
-		//		$scope.$apply(function () {
-		//			$scope.jsonData = htmlRawJsondata;
-		//		});
-		//	});
-		//});
-
-	//$('#gridController').scope().$apply();
-
-	//app.controller("gridCtrl", function($scope, jsonData) {
-	//	//$scope.$watch(function() { return jsonData; }, function(data) {
-	//	//	console.log(data);
-	//	//});
-	//	//$scope.$apply();
-	//	debugger;
-	//	$scope.$watch("jsonData", function(newVal, oldVal) {
-	//		$scope.$apply(function() {
-	//			$scope.jsonData = htmlRawJsondata;
-	//		});
-	//	});
-	//});
 </script>
 
 
@@ -109,13 +80,6 @@
 				<div class="panel panel-default">
 					<div class="panel-body searchPanelBody">
 						<div class="row">
-							@*@using (Ajax.BeginForm("Index", "Home", FormMethod.Post,
-		new AjaxOptions
-		{
-			HttpMethod = "POST",
-			InsertionMode = InsertionMode.Replace
-		},
-		new { id = "searchByClientForm", @class = "form-horizontal" }))*@
 							@using (Html.BeginForm("Index", "Home", FormMethod.Post,
 								new { id = "searchByClientForm", @class = "form-horizontal" }))
 							{
