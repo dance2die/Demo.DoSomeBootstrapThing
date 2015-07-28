@@ -29,11 +29,15 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Filters
 
 		private dynamic GetPageContext(HttpContext httpContext)
 		{
+			var urlHelper = new UrlHelper(httpContext.Request.RequestContext);
+
 			return new
 			{
 				db = "prod",
 				userName = "skim",
-				machineName = Environment.MachineName
+				machineName = Environment.MachineName,
+				searchByClientURL = urlHelper.Action("searchByClient", "Home"),
+				generateBatchIDURL = urlHelper.Action("GenerateBatchId", "Home")
 			};
 		}
 	}
