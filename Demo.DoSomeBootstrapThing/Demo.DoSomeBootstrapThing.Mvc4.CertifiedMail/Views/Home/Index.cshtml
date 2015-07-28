@@ -141,7 +141,6 @@
 									  jqx-settings="gridSettings">
 							</jqx-grid>
 
-							@*<input id="addToFinalResultButton" type="button" value="Add to Result" />*@
 							<button id="addToFinalResultButton" jqx-button ng-click="addToFinalResultClick()">
 								Add to Result
 							</button>
@@ -155,10 +154,11 @@
 			<div class="row">
 				<div class="panel panel-default col-sm-3">
 					<div class="panel-body">
-						@*@using (Html.BeginForm("GenerateBatchId", "Home", FormMethod.Post))*@
 						@using (Html.BeginForm("GenerateBatchId", "Home", FormMethod.Post))
 						{
-							<button class="btn btn-success" type="submit" ng-click="generateBatchIDClick('home/GenerateBatchId')">Generate Batch ID</button>
+							<button class="btn btn-success" type="submit" ng-click="generateBatchIDClick('home/GenerateBatchId')">
+								Generate Certified Mail
+							</button>
 						}
 					</div>
 				</div>
