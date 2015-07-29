@@ -12,7 +12,7 @@ app.controller("gridCtrl", function ($scope, $http, pageContext) {
 			lastName: "Kim"
 		},
 		//url: '/home/searchbyclient'
-		url: pageContext.searchByClient
+		url: pageContext.searchByClientURL
 		//url: '/sampledata/beverages.txt'
 	}).success(function (data, status) {
 		setGridSettings(data);
@@ -113,7 +113,7 @@ app.controller("gridCtrl", function ($scope, $http, pageContext) {
 		$http({
 			method: 'get',
 			//url: '/home/searchbyclient'
-			url: pageContext.searchByClient
+			url: pageContext.searchByClientURL
 		}).success(function (data, status) {
 			clearResultRows();
 			addToResultRows(data);
