@@ -106,6 +106,7 @@
 
 									<button type="button" ng-click="updatePartial()" class="btn btn-primary submitButton">
 										Search by Client
+										<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 									</button>
 								</fieldset>
 							}
@@ -123,18 +124,21 @@
 									<legend>Search by Uploading File</legend>
 
 									@*<div class="input-group">
-										<input type="file" class="form-control" name="file" id="file"/>
-										<span class="input-group-btn">
-											<button type="submit" class="btn btn-primary submitButton">
-												Upload File
-											</button>
-										</span>
-									</div>*@
+											<input type="file" class="form-control" name="file" id="file"/>
+											<span class="input-group-btn">
+												<button type="submit" class="btn btn-primary submitButton">
+													Upload File
+												</button>
+											</span>
+										</div>*@
 
 									<div class="input-group">
 										<input type="file" class="form-control" name="file" id="file" />
 										<span class="input-group-btn">
-											<button class="btn btn-primary" type="submit">Upload File</button>
+											<button class="btn btn-primary" type="submit">
+												Upload File
+												<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+											</button>
 										</span>
 									</div>
 								</fieldset>
@@ -159,6 +163,7 @@
 
 							<button id="addToFinalResultButton" jqx-button ng-click="addToFinalResultClick()">
 								Add to Result
+								<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
 							</button>
 						</fieldset>
 					</div>
@@ -174,6 +179,7 @@
 						{
 							<button class="btn btn-success" type="submit" ng-click="generateBatchIDClick('home/GenerateBatchId')">
 								Generate Certified Mail
+								<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
 							</button>
 						}
 					</div>
