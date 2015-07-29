@@ -195,7 +195,8 @@ app.controller("gridCtrl", function ($scope, $http, pageContext) {
 		//}
 
 		var selectedRows = getSelectedRows("jqxGrid0");
-		addRowsToGrid("jqxGrid1", selectedRows);
+		var rowsAdded = addRowsToGrid("jqxGrid1", selectedRows);
+		selectRows("jqxGrid1", rowsAdded);
 
 		var selectedRowIds = getSelectedRowIds("jqxGrid0");
 		deleteRowsFromGrid("jqxGrid0", selectedRowIds);
@@ -232,14 +233,23 @@ app.controller("gridCtrl", function ($scope, $http, pageContext) {
 	}
 });
 
+function selectRows(gridID, rowsToSelect) {
+	$.each(rowsToSelect, function (index, value) {
+		$('#' + gridID).jqxGrid('selectrow', value.uid);
+	});
+
+	//$('#' + gridID).jqxGrid('selectrow', rowsToSelect);
+};
 
 function clearGridSelections(gridId) {
 	var grid = $("#" + gridId);
 	grid.jqxGrid("clearselection");
 }
 
+// Returns rows added to the grid.
 function addRowsToGrid(toGridId, rowsToAdd) {
 	$("#" + toGridId).jqxGrid("addrow", null, rowsToAdd);
+	return rowsToAdd;
 }
 
 function deleteRowsFromGrid(fromGrid, rowIdsToDelete) {
