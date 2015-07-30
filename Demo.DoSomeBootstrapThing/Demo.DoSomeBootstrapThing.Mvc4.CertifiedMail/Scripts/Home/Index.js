@@ -6,16 +6,26 @@ function handleEvents() {
 	var fileNumberTextBox = $("#FileNumber");
 	var nameTextBoxs = $("#FirstName, #LastName");
 
+	var ENTER_KEYCODE = 13;	// ascii value for "enter" key
+
 	// When File # is modified, clear First/Last name fields
-	fileNumberTextBox.keypress(function () {
-		nameTextBoxs.val("");
-		fileNumberTextBox.scope().$apply("clearNames()");
+	fileNumberTextBox.keypress(function (e) {
+		if (e.keyCode === ENTER_KEYCODE) {
+			nameTextBoxs.scope().$apply("addSearchResultToGrid()");
+		} else {
+			nameTextBoxs.val("");
+			nameTextBoxs.scope().$apply("clearNames()");
+		}
 	});
 
 	// When F/l names are modified, clear File #
-	nameTextBoxs.keypress(function () {
-		fileNumberTextBox.val("");
-		fileNumberTextBox.scope().$apply("clearFileNumber()");
+	nameTextBoxs.keypress(function (e) {
+		if (e.keyCode === ENTER_KEYCODE) {
+			fileNumberTextBox.scope().$apply("addSearchResultToGrid()");
+		} else {
+			fileNumberTextBox.val("");
+			fileNumberTextBox.scope().$apply("clearFileNumber()");
+		}
 	});
 }
 
@@ -24,6 +34,10 @@ app.controller("gridCtrl", function ($scope, $http, pageContext) {
 	$scope.createWidget = false;
 
 	console.log(pageContext);
+
+	$scope.addSearchResultToGrid = function() {
+		alert("Searching...");
+	}
 
 	$scope.clearNames = function () {
 		$scope.firstName = "";
