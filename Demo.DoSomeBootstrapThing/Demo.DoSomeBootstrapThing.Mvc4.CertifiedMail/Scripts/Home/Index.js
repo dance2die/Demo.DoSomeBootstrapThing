@@ -1,8 +1,38 @@
-﻿var app = angular.module("app", ["ngRoute", "jqwidgets"]);
+﻿$(document).ready(function() {
+	handleEvents();
+});
+
+function handleEvents() {
+	var fileNumberTextBox = $("#FileNumber");
+	var nameTextBoxs = $("#FirstName, #LastName");
+
+	// When File # is modified, clear First/Last name fields
+	fileNumberTextBox.keypress(function () {
+		nameTextBoxs.val("");
+		fileNumberTextBox.scope().$apply("clearNames()");
+	});
+
+	// When F/l names are modified, clear File #
+	nameTextBoxs.keypress(function () {
+		fileNumberTextBox.val("");
+		fileNumberTextBox.scope().$apply("clearFileNumber()");
+	});
+}
+
+var app = angular.module("app", ["ngRoute", "jqwidgets"]);
 app.controller("gridCtrl", function ($scope, $http, pageContext) {
 	$scope.createWidget = false;
 
 	console.log(pageContext);
+
+	$scope.clearNames = function () {
+		$scope.firstName = "";
+		$scope.lastName = "";
+	}
+
+	$scope.clearFileNumber = function () {
+		$scope.fileNumber = "";
+	}
 
 	$http({
 		method: 'POST',
