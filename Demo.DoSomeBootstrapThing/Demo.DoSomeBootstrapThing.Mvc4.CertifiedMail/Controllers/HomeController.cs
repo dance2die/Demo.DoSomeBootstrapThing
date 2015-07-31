@@ -104,8 +104,10 @@ namespace Demo.DoSomeBootstrapThing.Mvc4.CertifiedMail.Controllers
 
 		private static JsonSerializerSettings GetJsonSerializerSettings()
 		{
-			var jsonSerializerSettings = new JsonSerializerSettings();
-			jsonSerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+			var jsonSerializerSettings = new JsonSerializerSettings
+			{
+				ContractResolver = new CamelCasePropertyNamesContractResolver()
+			};
 			return jsonSerializerSettings;
 		}
 	}
