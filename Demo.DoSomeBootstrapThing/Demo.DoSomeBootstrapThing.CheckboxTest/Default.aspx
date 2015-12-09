@@ -16,23 +16,7 @@
 	<form id="form1" runat="server">
 		<div>
 
-<%--			<div class="container">
-				<div class="col-md-6">
-					<div class="checkbox">
-						<label for="unReimbExpOnly"><span>Un-Reimb.Exp. Only</span></label>
-						<input id="unReimbExpOnly" ng-model="unReimbExpOnly" type="checkbox" style="position: relative" class="checkbox pull-right" />
-						<input type="hidden" id="unReimbExpOnlyTag" ng-model="unReimbExpOnlyTag" />
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="checkbox">
-						<label for="toggleOnReport">Select All</label>
-						<input id="toggleOnReport" type="checkbox" style="position: relative" class="checkbox pull-right" />
-					</div>
-				</div>
-			</div>--%>
-
-			<div class="container">
+			<%--			<div class="container">
 				<div class="container">
 					<div class="col-lg-6">
 						<label for="unReimbExpOnly" class="checkbox-inline" ng-click="handleUnReimbExpOnly()">
@@ -50,7 +34,7 @@
 				</div>
 
 				<div class="btn-group" data-toggle="buttons">
-					<label for="unReimbExpOnly" class="btn btn-primary" >
+					<label for="unReimbExpOnly" class="btn btn-primary">
 						<input id="unReimbExpOnly" ng-model="unReimbExpOnly" type="checkbox" />
 						Un-Reimb.Exp. Only
 						<input type="hidden" id="unReimbExpOnlyTag" />
@@ -59,24 +43,28 @@
 						<input id="toggleOnReport" type="checkbox" />
 						Select All
 					</label>
-				</div>
+				</div>--%>
 
-				<div class="container">
-					<div class="col-lg-6 form-inline">
-						<label for="expensesDue">Expenses Due</label>
-						<input id="expensesDue" ng-model="expensesDue" class="form-control pull-right" type="text" readonly="readonly" />
+			<div class="container">
+				<div class="col-sm-6 form-inline">
+					<div class="input-group">
+						<label class="input-group-addon" for="expensesDue">Expenses Due</label>
+						<input id="expensesDue" ng-model="expensesDue" class="form-control pull-right input-sm" type="text" readonly="readonly" />
 						<input type="hidden" id="expensesDueTag" ng-model="expensesDueTag" />
 					</div>
-					<div class="col-lg-6 form-inline">
-						<label for="cpsPerc">CPS %</label>
-						<input id="cpsPerc" ng-model="cpsPerc" class="form-control pull-right" type="text" />
+				</div>
+				<div class="col-sm-6 form-inline">
+					<div class="input-group">
+						<label for="cpsPerc" class="input-group-addon">CPS %</label>
+						<input id="cpsPerc" ng-model="cpsPerc" class="form-control pull-right input-sm" type="text" />
 					</div>
 				</div>
+			</div>
 
-				<div class="container">
+			<%--				<div class="container">
 					<button ng-click="viewReport()" class="btn btn-default" id="viewButton">View</button>
 					<input ng-click="submitList()" class="btn btn-primary" id="submitButton" type="submit" value="Submit" />
-				</div>
+				</div>--%>
 			</div>
 		</div>
 	</form>
